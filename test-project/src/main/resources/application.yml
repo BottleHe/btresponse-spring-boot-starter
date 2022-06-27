@@ -1,0 +1,21 @@
+server:
+  port: 17712
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.10.2:3306/spring-demo?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123123
+logging:
+  level:
+    work.bottle: debug
+    org: info
+mybatis:
+  #configuration:
+  #  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:work/bottle/demo/mapper/*.xml
+
+bt-response:
+  enable: true
+  #force: false
+
