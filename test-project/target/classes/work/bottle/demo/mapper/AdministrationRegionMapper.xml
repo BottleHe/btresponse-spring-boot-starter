@@ -1,0 +1,55 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work.bottle.demo.mapper.AdministrationRegionMapper">
+    <insert id="insert" parameterType="work.bottle.demo.domain.AdministrationRegion" useGeneratedKeys="true">
+        insert into bt_administration_region
+        <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="null != id">
+                id,
+            </if>
+            <if test="null != pid">
+                pid,
+            </if>
+            <if test="null != deep">
+                deep,
+            </if>
+            <if test="null != name">
+                name,
+            </if>
+            <if test="null != pinyinFull">
+                pinyin,
+            </if>
+            <if test="null != extId">
+                ext_id,
+            </if>
+            <if test="null != extName">
+                ext_name,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="null != id">
+                #{id, jdbcType=INTEGER},
+            </if>
+            <if test="null != pid">
+                #{pid, jdbcType=INTEGER},
+            </if>
+            <if test="null != deep">
+                #{deep, jdbcType=INTEGER},
+            </if>
+            <if test="null != name">
+                #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="null != pinyinFull">
+                #{pinyinFull, jdbcType=VARCHAR},
+            </if>
+            <if test="null != extId">
+                #{extId, jdbcType=BIGINT},
+            </if>
+            <if test="null != extName">
+                #{extName, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

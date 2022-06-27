@@ -1,0 +1,3 @@
+# Application Listeners
+#org.springframework.context.ApplicationListener=\
+#work.bottle.demo.listener.BtApplicationEventListener
