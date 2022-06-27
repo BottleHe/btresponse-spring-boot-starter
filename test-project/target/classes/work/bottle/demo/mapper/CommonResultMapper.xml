@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work.bottle.demo.mapper.CommonResultMapper">
+    <resultMap id="Account" type="work.bottle.demo.domain.Account">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="balance" property="balance" />
+    </resultMap>
+    <resultMap id="AdministrationRegion" type="work.bottle.demo.domain.AdministrationRegion">
+        <id column="id" property="id" />
+        <result column="pid" property="pid" />
+        <result column="deep" property="deep" />
+        <result column="name" property="name" />
+        <result column="pinyin" property="pinyinFull" />
+        <result column="ext_id" property="extId" />
+        <result column="ext_name" property="extName" />
+    </resultMap>
+    <resultMap id="HotelInfo" type="work.bottle.demo.domain.HotelInfo">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="title" property="title" />
+        <result column="group" property="group" />
+        <result column="source" property="source" />
+        <result column="thumbnail" property="thumbnail" />
+        <result column="brief" property="brief" />
+        <result column="tips" property="tips" />
+        <result column="rating" property="rating" />
+        <result column="latitude" property="latitude" />
+        <result column="longitude" property="longitude" />
+        <result column="city_id" property="cityId" />
+        <result column="address" property="address" />
+        <result column="fence" property="fence" />
+        <result column="introduction" property="introduction" />
+    </resultMap>
+</mapper>

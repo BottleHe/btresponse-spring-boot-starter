@@ -1,0 +1,96 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work.bottle.demo.mapper.HotelInfoMapper">
+    <insert id="insertMultiHotelData" parameterType="java.util.List">
+        insert into bt_hotel_info (`name`, title, `group`, `source`, thumbnail, brief, tips, rating, latitude, longitude, address, fence, introduction) values
+        <foreach collection="hotelInfoList" item="hotel" separator=",">
+            (#{hotel.name}, #{hotel.title}, #{hotel.group}, #{hotel.source}, #{hotel.thumbnail}, #{hotel.brief}, #{hotel.tips}, #{hotel.rating}, #{hotel.latitude}, #{hotel.longitude}, #{hotel.address}, #{hotel.fence}, #{hotel.introduction})
+        </foreach>
+    </insert>
+    <select id="getHotelInfoCount" parameterType="work.bottle.demo.domain.HotelInfo" resultType="java.lang.Integer">
+        select count(id) as cnt from bt_hotel_info
+        <where>
+            <if test="null != name">
+                and `name` = #{name, jdbcType=VARCHAR}
+            </if>
+            <if test="null != title">
+                and title = #{title, jdbcType=VARCHAR}
+            </if>
+            <if test="null != group">
+                and `group` = #{group, jdbcType=VARCHAR}
+            </if>
+            <if test="null != id">
+                and id = #{id, jdbcType=INTEGER}
+            </if>
+        </where>
+        limit 1
+    </select>
+    <select id="getHotelInfoList" resultMap="work.bottle.demo.mapper.CommonResultMapper.HotelInfo">
+        select
+        <choose>
+            <when test="null != queryFields">
+                <foreach collection="queryFields" separator="," item="field">
+                    `${field}`
+                </foreach>
+            </when>
+           <otherwise>
+               id, `name`, title, `group`, `source`, thumbnail, brief, tips, rating, latitude, longitude, address, fence, introduction
+           </otherwise>
+        </choose>
+        from bt_hotel_info
+        <if test="null != data">
+            <where>
+                <if test="null != data.name">
+                    and `name` = #{data.name, jdbcType=VARCHAR}
+                </if>
+                <if test="null != data.title">
+                    and title = #{data.title, jdbcType=VARCHAR}
+                </if>
+                <if test="null != data.group">
+                    and `group` = #{data.group, jdbcType=VARCHAR}
+                </if>
+                <if test="null != data.id">
+                    and id = #{data.id, jdbcType=INTEGER}
+                </if>
+            </where>
+        </if>
+        order by
+        <choose>
+            <when test="sortBy != null">
+                ${sortBy}
+            </when>
+            <otherwise>
+                id
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="sortOrder != null">
+                ${sortOrder}
+            </when>
+            <otherwise>
+                desc
+            </otherwise>
+        </choose>
+        limit
+        <choose>
+            <when test="offset != null and offset >= 0">
+                #{offset}
+            </when>
+            <otherwise>
+                0
+            </otherwise>
+        </choose>
+        ,
+        <choose>
+            <when test="length != null and length > 0">
+                #{length}
+            </when>
+            <otherwise>
+                20
+            </otherwise>
+        </choose>
+
+    </select>
+</mapper>

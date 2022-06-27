@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2AZLaoA3fITh21A35HMdKpOK1uN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.format.on.save.advertiser.fired" value="true" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin" />
+      <recent name="$PROJECT_DIR$/test-project/src/main/resources/work/bottle/demo/mapper" />
+      <recent name="$PROJECT_DIR$/test-project/src/main/resources" />
+      <recent name="$PROJECT_DIR$/test-project/src/main/java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="work.bottle.demo" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="work.bottle.plugin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="work.bottle.demo.mapper" />
+      <recent name="work.bottle.plugin" />
+      <recent name="work.bottle.plugin.model" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="HotelBaseServiceStartup" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="test-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="work.bottle.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.bottle.demo.HotelBaseServiceStartup" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.HotelBaseServiceStartup" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="" />
+      <created>1655212233446</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655212233446</updated>
+      <workItem from="1655212236420" duration="6987000" />
+      <workItem from="1655219283266" duration="38580000" />
+      <workItem from="1655380517713" duration="29561000" />
+      <workItem from="1655438186804" duration="24000" />
+      <workItem from="1655446385170" duration="705000" />
+      <workItem from="1655699656574" duration="4198000" />
+      <workItem from="1655866488981" duration="32000" />
+      <workItem from="1655954008027" duration="40000" />
+      <workItem from="1655954409181" duration="351000" />
+      <workItem from="1655954959789" duration="3088000" />
+      <workItem from="1656063384351" duration="94000" />
+      <workItem from="1656064259103" duration="2748000" />
+      <workItem from="1656297505775" duration="10758000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.16/spring-web-5.3.16-sources.jar!/org/springframework/http/converter/AbstractHttpMessageConverter.java</url>
+          <line>209</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.16/spring-web-5.3.16-sources.jar!/org/springframework/http/converter/AbstractHttpMessageConverter.java</url>
+          <line>212</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <condition expression="advice.equals(BtResponseBodyAdvice.class)" language="JAVA" custom="work.bottle.demo.bean.BtResponseBodyAdvice" />
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.java</url>
+          <line>231</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java</url>
+          <line>729</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java</url>
+          <line>633</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.16/spring-web-5.3.16-sources.jar!/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.java</url>
+          <line>277</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java</url>
+          <line>46</line>
+          <properties field="responseBodyAdvice" class="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyAdviceChain" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java</url>
+          <line>162</line>
+          <properties field="requestResponseBodyAdvice" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurationSupport.java</url>
+          <line>251</line>
+          <properties field="returnValueHandlers" class="org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport">
+            <option name="WATCH_ACCESS" value="true" />
+          </properties>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
