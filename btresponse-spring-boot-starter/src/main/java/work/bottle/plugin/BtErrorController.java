@@ -11,11 +11,13 @@ import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,7 +93,9 @@ public class BtErrorController extends AbstractErrorController {
         BtResponse ret = new BtResponse(false, status.value(), body, (String) body.getOrDefault("error", "Internal server error"));
         body.remove("error");
         body.remove("status");
-        return new ResponseEntity<>(ret, status);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<>(ret, headers, status);
     }
 
     @ExceptionHandler(HttpMediaTypeNotAcceptableException.class)

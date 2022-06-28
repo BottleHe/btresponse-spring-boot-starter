@@ -13,8 +13,9 @@ import work.bottle.plugin.model.BtResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-@ControllerAdvice
+// @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 public class BaseResponseBodyExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(BaseResponseBodyExceptionHandler.class);
@@ -22,12 +23,12 @@ public class BaseResponseBodyExceptionHandler {
     @ExceptionHandler(Throwable.class)
     @ResponseBody
     public ResponseEntity<BtResponse> baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
-        logger.warn("[Springboot ExceptionHandler]");
+        logger.warn("[Springboot ExceptionHandler]", t);
         if (t instanceof OperationException)
         {
             return new ResponseEntity<>(new BtResponse(false, ((OperationException) t).getCode(),
                     ((OperationException) t).getData(), t.getMessage()), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new BtResponse(500, "Internal Server Error"), HttpStatus.resolve(response.getStatus()));
+        return new ResponseEntity<>(new BtResponse(response.getStatus(), "Internal Server Error"), HttpStatus.resolve(response.getStatus()));
     }
 }

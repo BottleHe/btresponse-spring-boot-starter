@@ -11,7 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
@@ -19,6 +21,7 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import work.bottle.plugin.annotation.Ignore;
+import work.bottle.plugin.exception.OperationException;
 import work.bottle.plugin.model.BtResponse;
 
 
@@ -48,15 +51,24 @@ public class BtResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                                   Class<? extends HttpMessageConverter<?>> selectedConverterType,
                                   ServerHttpRequest request, ServerHttpResponse response) {
         logger.debug("BtResponseBodyAdvice::beforeBodyWrite({}, {}, {}, {}, {}, {})", body, returnType, selectedContentType, selectedConverterType, request, response);
-        if (null == body) {
-            logger.debug("body is null");
-            return new BtResponse();
+        try {
+            if (null == body) {
+                logger.debug("body is null");
+                return new BtResponse();
+            }
+            if (body instanceof BtResponse) {
+                return body;
+            }
+            logger.debug("body type: {}" + body.getClass().getName());
+            return new BtResponse(0, body);
+        } catch (Throwable t) {
+            logger.warn("[Springboot ExceptionHandler]", t);
+            if (t instanceof OperationException)
+            {
+                return new BtResponse(false, ((OperationException) t).getCode(),
+                        ((OperationException) t).getData(), t.getMessage());
+            }
+            return new BtResponse(500, "Internal Server Error");
         }
-
-        if (body instanceof BtResponse) {
-            return body;
-        }
-        logger.debug("body type: {}" + body.getClass().getName());
-        return new BtResponse(0, body);
     }
 }

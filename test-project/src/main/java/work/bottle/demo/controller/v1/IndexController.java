@@ -3,8 +3,11 @@ package work.bottle.demo.controller.v1;
 import org.springframework.web.bind.annotation.*;
 import work.bottle.demo.model.EmployeeAuth;
 import work.bottle.demo.model.EmployeeMobileLoginData;
+import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.OperationException;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @RequestMapping("/index/v1")
@@ -119,5 +122,15 @@ public class IndexController {
         employeeAuth.setAuthTimestamp((int)(System.currentTimeMillis() / 1000));
         employeeAuth.setMobile("18117777777");
         return employeeAuth;
+    }
+
+    @GetMapping("/code/send")
+    public VerificationData sendSmsVerificationData() {
+        VerificationData verificationData = new VerificationData();
+        int i = ThreadLocalRandom.current().nextInt(800, 999999);
+        verificationData.setCode(String.format("%06d", i));
+        verificationData.setExpireTimestamp((int)(System.currentTimeMillis() / 1000) + 300); // 5分钟过期
+        verificationData.setExpireTimestamp((int)(System.currentTimeMillis() / 1000) + 60); // 1分钟后支持重发
+        return verificationData;
     }
 }

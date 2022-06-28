@@ -75,6 +75,7 @@
       <recent name="work.bottle.plugin" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="work.bottle.demo.model" />
       <recent name="work.bottle.demo.mapper" />
       <recent name="work.bottle.plugin" />
       <recent name="work.bottle.plugin.model" />
@@ -222,6 +223,11 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.java</url>
           <line>277</line>
           <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java</url>
