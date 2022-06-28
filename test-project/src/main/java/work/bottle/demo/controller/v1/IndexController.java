@@ -1,9 +1,8 @@
 package work.bottle.demo.controller.v1;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import work.bottle.demo.model.EmployeeAuth;
+import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.OperationException;
 
@@ -109,5 +108,16 @@ public class IndexController {
             throw new OperationException(10100, "Operation Exception");
         }
         return "operation exception";
+    }
+
+    @PostMapping("/login")
+    public EmployeeAuth doLogin(@RequestBody(required = false) EmployeeMobileLoginData data) {
+        EmployeeAuth employeeAuth = new EmployeeAuth();
+
+        employeeAuth.setAuthorizationKey("hhhhhhhhhhh");
+        employeeAuth.setUsername("bottle");
+        employeeAuth.setAuthTimestamp((int)(System.currentTimeMillis() / 1000));
+        employeeAuth.setMobile("18117777777");
+        return employeeAuth;
     }
 }

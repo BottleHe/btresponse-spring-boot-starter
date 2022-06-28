@@ -21,8 +21,6 @@ public class HotelBaseServiceStartup {
                 System.out.println(beanDefinitionName);
             }
 
-
-
             System.out.println("\n\n消息转换器列表:");
             RequestMappingHandlerAdapter requestMappingHandlerAdapter = context.getBean("requestMappingHandlerAdapter", RequestMappingHandlerAdapter.class);
             List<HttpMessageConverter<?>> messageConverters = requestMappingHandlerAdapter.getMessageConverters();

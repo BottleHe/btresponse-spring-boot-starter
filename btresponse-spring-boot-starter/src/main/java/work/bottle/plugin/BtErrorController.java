@@ -43,6 +43,7 @@ public class BtErrorController extends AbstractErrorController {
      * Create a new {@link BtErrorController} instance.
      * @param errorAttributes the error attributes
      * @param errorProperties configuration properties
+     * @param btResponseProperties btResponseProperties
      */
     public BtErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties, BtResponseProperties btResponseProperties) {
         this(errorAttributes, errorProperties, btResponseProperties, Collections.emptyList());
@@ -52,6 +53,7 @@ public class BtErrorController extends AbstractErrorController {
      * Create a new {@link BtErrorController} instance.
      * @param errorAttributes the error attributes
      * @param errorProperties configuration properties
+     * @param btResponseProperties btResponseProperties
      * @param errorViewResolvers error view resolvers
      */
     public BtErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties,
@@ -59,6 +61,7 @@ public class BtErrorController extends AbstractErrorController {
                              List<ErrorViewResolver> errorViewResolvers) {
         super(errorAttributes, errorViewResolvers);
         Assert.notNull(errorProperties, "ErrorProperties must not be null");
+        Assert.notNull(btResponseProperties, "BtResponseProperties must not be null");
         this.errorProperties = errorProperties;
         this.btResponseProperties = btResponseProperties;
     }
@@ -82,6 +85,7 @@ public class BtErrorController extends AbstractErrorController {
     @RequestMapping
     public ResponseEntity<BtResponse> error(HttpServletRequest request) {
         Map<String, Object> body = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.ALL));
+        logger.warn("[Out of springboot exception]");
         HttpStatus status = getStatus(request);
         BtResponse ret = new BtResponse(false, status.value(), body, (String) body.getOrDefault("error", "Internal server error"));
         body.remove("error");

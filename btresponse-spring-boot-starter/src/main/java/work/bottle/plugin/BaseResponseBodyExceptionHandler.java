@@ -1,5 +1,10 @@
 package work.bottle.plugin;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,20 +14,20 @@ import work.bottle.plugin.model.BtResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// @ControllerAdvice
+@ControllerAdvice
+@ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 public class BaseResponseBodyExceptionHandler {
+    private static final Logger logger = LoggerFactory.getLogger(BaseResponseBodyExceptionHandler.class);
 
     @ExceptionHandler(Throwable.class)
     @ResponseBody
-    public BtResponse baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
-        // System.out.println("内部异常");
+    public ResponseEntity<BtResponse> baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
+        logger.warn("[Springboot ExceptionHandler]");
         if (t instanceof OperationException)
         {
-            response.setStatus(200);
-            return new BtResponse(false, ((OperationException) t).getCode(),
-                    ((OperationException) t).getData(), t.getMessage());
+            return new ResponseEntity<>(new BtResponse(false, ((OperationException) t).getCode(),
+                    ((OperationException) t).getData(), t.getMessage()), HttpStatus.OK);
         }
-        response.setStatus(500);
-        return new BtResponse(500, "Internal Server Error");
+        return new ResponseEntity<>(new BtResponse(500, "Internal Server Error"), HttpStatus.resolve(response.getStatus()));
     }
 }

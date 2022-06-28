@@ -3,32 +3,110 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <name>btresponse-core</name>
+    <url>https://github.com/BottleHe/web-btresponse.git</url>
     <groupId>work.bottle.plugin</groupId>
     <artifactId>btresponse-core</artifactId>
     <version>1.0.1-RELEASE</version>
+    <description>Some common Http/Https return formats and some operation exceptions, verify the exception definition.
+    </description>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License Version 3</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+            <comments>Some common Http/Https return formats and some operation exceptions, verify the exception
+                definition.
+            </comments>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/BottleHe/web-btresponse/tree/master/btresponse-core</url>
+        <connection>https://github.com/BottleHe/web-btresponse.git</connection>
+    </scm>
+    <developers>
+        <developer>
+            <name>BottleHe</name>
+            <id>BottleHe</id>
+            <email>hejiajia001@hotmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
     <distributionManagement>
-        <repository>
-            <id>nexus-bottle</id>
-            <name>Nexus Release Repository</name>
-            <url>https://nexus.bottle.work/repository/maven-releases/</url>
-        </repository>
         <snapshotRepository>
-            <id>nexus-bottle</id>
-            <name>Nexus Release Repository</name>
-            <url>https://nexus.bottle.work/repository/maven-snapshots/</url>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
     <build>
         <plugins>
             <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.5.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <!-- jdk1.8要加上，1.7要去掉，否则会报错 -->
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
