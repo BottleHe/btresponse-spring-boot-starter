@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// @ControllerAdvice
+@ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 public class BaseResponseBodyExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(BaseResponseBodyExceptionHandler.class);
@@ -24,6 +24,8 @@ public class BaseResponseBodyExceptionHandler {
     @ResponseBody
     public ResponseEntity<BtResponse> baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[Springboot ExceptionHandler]", t);
+        // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
+        response.reset();
         if (t instanceof OperationException)
         {
             return new ResponseEntity<>(new BtResponse(false, ((OperationException) t).getCode(),

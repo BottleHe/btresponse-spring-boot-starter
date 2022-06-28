@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import work.bottle.plugin.exception.OperationException;
 import work.bottle.plugin.model.BtResponse;
 
 import javax.servlet.RequestDispatcher;
@@ -87,14 +88,25 @@ public class BtErrorController extends AbstractErrorController {
 
     @RequestMapping
     public ResponseEntity<BtResponse> error(HttpServletRequest request) {
-        Map<String, Object> body = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.ALL));
         logger.warn("[Out of springboot exception]");
+        Throwable e = (Throwable) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        if (null != e) {
+            Throwable cause = e.getCause();
+            if (null != cause) {
+                // logger.error("  -- {}", cause);
+                if (cause instanceof OperationException) {
+                    return new ResponseEntity<>(new BtResponse(false, ((OperationException) cause).getCode(),
+                            ((OperationException) cause).getData(), cause.getMessage()), HttpStatus.OK);
+                }
+            }
+        }
+        Map<String, Object> body = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.ALL));
         HttpStatus status = getStatus(request);
         BtResponse ret = new BtResponse(false, status.value(), body, (String) body.getOrDefault("error", "Internal server error"));
         body.remove("error");
         body.remove("status");
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(ret, headers, status);
     }
 
