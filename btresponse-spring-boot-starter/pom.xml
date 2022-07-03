@@ -8,7 +8,7 @@
     <url>https://github.com/BottleHe/web-btresponse.git</url>
     <artifactId>btresponse-spring-boot-starter</artifactId>
     <groupId>work.bottle.plugin</groupId>
-    <version>1.0.3-RELEASE</version>
+    <version>2.7.1</version>
     <description>Extend Springboot-web/Servlet functionality to provide configurable, unified data return format and exception handling return format.</description>
     <parent>
         <artifactId>spring-boot-parent</artifactId>
