@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseBeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/config/BaseConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegisterInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtHttpResponseConverterConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseBeanFactoryPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +76,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -179,7 +186,8 @@
       <workItem from="1656496085941" duration="80000" />
       <workItem from="1656664790699" duration="17000" />
       <workItem from="1656665712399" duration="1403000" />
-      <workItem from="1656827732946" duration="453000" />
+      <workItem from="1656827732946" duration="917000" />
+      <workItem from="1656828715926" duration="10860000" />
     </task>
     <servers />
   </component>
@@ -235,15 +243,25 @@
           <line>94</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java</url>
-          <line>134</line>
+          <line>139</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.java</url>
           <line>277</line>
           <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.21/spring-webmvc-5.3.21-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java</url>
+          <line>633</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtMappingJackson2HttpMessageConverter.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java</url>
@@ -264,6 +282,15 @@
             <option name="WATCH_ACCESS" value="true" />
           </properties>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.21/spring-web-5.3.21.jar!/org/springframework/http/converter/json/AbstractJackson2HttpMessageConverter.class</url>
+          <line>177</line>
+          <properties class="org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter" method="canWrite">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

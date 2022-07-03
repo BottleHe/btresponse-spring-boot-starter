@@ -32,6 +32,8 @@ public class BtResponseConfig {
         this.btResponseProperties = btResponseProperties;
     }
 
+
+
     /**
      * 定义一个处理tomcat 异常处理的Bean. 方式1
      * 我这里有注入时机问题, 所以通过 ApplicationContextInitializer 直接注入singleton

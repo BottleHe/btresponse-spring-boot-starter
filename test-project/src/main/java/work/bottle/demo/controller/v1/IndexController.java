@@ -18,6 +18,11 @@ public class IndexController {
         return "hello world";
     }
 
+    @GetMapping(value = "/ret/str/cn")
+    public String retStrCn() {
+        return "你好, 朋友";
+    }
+
     @GetMapping("/ret/true")
     public Boolean retTrue() {
         return true;
