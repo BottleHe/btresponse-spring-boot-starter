@@ -99,6 +99,11 @@ public class IndexController {
         return s;
     }
 
+    @GetMapping("/ret/nobj")
+    public Object nobj() {
+        return new Object();
+    }
+
     @GetMapping("/err/exception")
     public Object errException() {
         return 1 / 0;

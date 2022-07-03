@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="" />
+    <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +25,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -59,6 +69,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/model" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -164,6 +175,11 @@
       <workItem from="1656063384351" duration="94000" />
       <workItem from="1656064259103" duration="2748000" />
       <workItem from="1656297505775" duration="10758000" />
+      <workItem from="1656495139605" duration="674000" />
+      <workItem from="1656496085941" duration="80000" />
+      <workItem from="1656664790699" duration="17000" />
+      <workItem from="1656665712399" duration="1403000" />
+      <workItem from="1656827732946" duration="385000" />
     </task>
     <servers />
   </component>
@@ -221,7 +237,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java</url>
-          <line>129</line>
+          <line>134</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
