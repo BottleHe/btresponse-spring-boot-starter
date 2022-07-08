@@ -11,6 +11,7 @@
     <description>Some common Http/Https return formats and some operation exceptions, verify the exception definition.
     </description>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
