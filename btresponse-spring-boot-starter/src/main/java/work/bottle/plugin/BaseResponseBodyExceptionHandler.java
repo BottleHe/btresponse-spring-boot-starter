@@ -13,7 +13,7 @@ import work.bottle.plugin.model.BtResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.validation.ValidationException;
 
 @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
@@ -26,6 +26,10 @@ public class BaseResponseBodyExceptionHandler {
         logger.warn("[Springboot ExceptionHandler]", t);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         response.reset();
+        if (t instanceof ValidationException) {
+            return new ResponseEntity<>(new BtResponse(false, 100004,
+                    null, t.getMessage()), HttpStatus.OK);
+        }
         if (t instanceof OperationException)
         {
             return new ResponseEntity<>(new BtResponse(false, ((OperationException) t).getCode(),
