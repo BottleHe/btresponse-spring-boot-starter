@@ -17,4 +17,3 @@ mybatis:
 
 bt-response:
   enable: true
-

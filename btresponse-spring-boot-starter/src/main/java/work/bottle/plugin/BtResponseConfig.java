@@ -1,7 +1,5 @@
 package work.bottle.plugin;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -12,6 +10,7 @@ import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolve
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.server.ErrorPageRegistrar;
 import org.springframework.boot.web.server.ErrorPageRegistrarBeanPostProcessor;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +21,6 @@ import java.util.stream.Collectors;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @EnableConfigurationProperties({ ServerProperties.class, BtResponseProperties.class })
 public class BtResponseConfig {
-    private static final Logger logger = LoggerFactory.getLogger(BtResponseConfig.class);
 
     private final ServerProperties serverProperties;
     private final BtResponseProperties btResponseProperties;
@@ -32,7 +30,11 @@ public class BtResponseConfig {
         this.btResponseProperties = btResponseProperties;
     }
 
-
+    @Bean
+    @ConditionalOnMissingBean(value = ErrorAttributes.class, search = SearchStrategy.CURRENT)
+    public DefaultErrorAttributes errorAttributes() {
+        return new DefaultErrorAttributes();
+    }
 
     /**
      * 定义一个处理tomcat 异常处理的Bean. 方式1
@@ -52,6 +54,7 @@ public class BtResponseConfig {
     }
 
     @Bean
+    @ConditionalOnMissingBean(value = ErrorController.class, search = SearchStrategy.CURRENT)
     public BtErrorController btErrorController(ErrorAttributes errorAttributes,
                                                ObjectProvider<ErrorViewResolver> errorViewResolvers) {
         return new BtErrorController(errorAttributes, this.serverProperties.getError(), this.btResponseProperties,
