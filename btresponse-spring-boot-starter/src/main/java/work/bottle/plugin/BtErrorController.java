@@ -73,6 +73,7 @@ public class BtErrorController extends AbstractErrorController {
             logger.debug("force to return BtResponse json error");
             return error(request);
         }
+        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}", request.getLocalAddr(), request.getMethod(), request.getRequestURL());
         HttpStatus status = getStatus(request);
         Map<String, Object> model = Collections
                 .unmodifiableMap(getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.TEXT_HTML)));
