@@ -8,20 +8,15 @@ import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorCon
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import work.bottle.plugin.exception.OperationException;
 import work.bottle.plugin.model.BtResponse;
@@ -88,11 +83,12 @@ public class BtErrorController extends AbstractErrorController {
 
     @RequestMapping
     public ResponseEntity<BtResponse> error(HttpServletRequest request) {
-        logger.warn("[Out of springboot exception]");
+        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}", request.getLocalAddr(), request.getMethod(), request.getRequestURL());
         Throwable e = (Throwable) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         if (null != e) {
+            logger.error("", e);
             Throwable cause = e.getCause();
             if (null != cause) {
                 // logger.error("  -- {}", cause);

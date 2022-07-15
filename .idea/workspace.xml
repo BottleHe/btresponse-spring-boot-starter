@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtBeanDefinitionRegistryPostProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegisterInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegistrar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/HotelBaseServiceStartup.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/HotelBaseServiceStartup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-project/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/HotelBaseServiceStartup.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/HotelBaseServiceStartup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +185,7 @@
       <workItem from="1657292091577" duration="3080000" />
       <workItem from="1657444884970" duration="1403000" />
       <workItem from="1657765697126" duration="6503000" />
-      <workItem from="1657862058274" duration="10212000" />
+      <workItem from="1657862058274" duration="14678000" />
     </task>
     <servers />
   </component>
