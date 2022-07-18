@@ -1,7 +1,8 @@
-org.springframework.context.ApplicationContextInitializer=\
- work.bottle.plugin.BtErrorPageRegisterInitializer
+#org.springframework.context.ApplicationContextInitializer=\
+# work.bottle.plugin.BtErrorPageRegisterInitializer
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  work.bottle.plugin.BtResponseConfig,\
   work.bottle.plugin.BtResponseBeanPostProcessor,\
   work.bottle.plugin.BtResponseBodyAdvice,\
   work.bottle.plugin.BaseResponseBodyExceptionHandler
