@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtBeanDefinitionRegistryPostProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtBeanDefinitionRegistryPostProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegisterInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegisterInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/config/BaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/config/BaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +185,7 @@
       <workItem from="1657444884970" duration="1403000" />
       <workItem from="1657765697126" duration="6503000" />
       <workItem from="1657862058274" duration="16268000" />
-      <workItem from="1658124000952" duration="3040000" />
+      <workItem from="1658124000952" duration="3973000" />
     </task>
     <servers />
   </component>
