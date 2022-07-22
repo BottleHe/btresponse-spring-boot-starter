@@ -20,10 +20,12 @@ public class BtBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
     // "is not eligible for getting processed by all BeanPostProcessors"
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        registry.registerBeanDefinition("btResponseProperties",
-                BeanDefinitionBuilder.genericBeanDefinition(BtResponseProperties.class).getBeanDefinition());
-        registry.registerBeanDefinition("btResponseConfig",
-                BeanDefinitionBuilder.genericBeanDefinition(BtResponseConfig.class).getBeanDefinition());
+//        registry.registerBeanDefinition("btResponseProperties",
+//                BeanDefinitionBuilder.genericBeanDefinition(BtResponseProperties.class).getBeanDefinition());
+//        registry.registerBeanDefinition("btResponseConfig",
+//                BeanDefinitionBuilder.genericBeanDefinition(BtResponseConfig.class).getBeanDefinition());
+        // String[] beanDefinitionNames = registry.getBeanDefinitionNames();
+        // registry.registerBeanDefinition("btTypeExcludeFilter", new RootBeanDefinition(BtTypeExcludeFilter.class));
         if (registry.containsBeanDefinition("basicErrorController")) {
             registry.removeBeanDefinition("basicErrorController");
         }

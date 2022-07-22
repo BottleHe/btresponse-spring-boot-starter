@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/ServerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtTypeExcludeFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/config/UndertowCustomizationBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtBeanDefinitionRegistryPostProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtBeanDefinitionRegistryPostProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegistrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +45,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/test-project/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorPageRegisterInitializer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtBeanDefinitionRegistryPostProcessor.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/resources/META-INF/spring.factories" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,6 +103,7 @@
       <recent name="work.bottle.plugin" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="work.bottle.plugin.exception" />
       <recent name="work.bottle.demo.model" />
       <recent name="work.bottle.demo.mapper" />
       <recent name="work.bottle.plugin" />
@@ -185,7 +207,9 @@
       <workItem from="1657444884970" duration="1403000" />
       <workItem from="1657765697126" duration="6503000" />
       <workItem from="1657862058274" duration="16268000" />
-      <workItem from="1658124000952" duration="3973000" />
+      <workItem from="1658124000952" duration="6262000" />
+      <workItem from="1658456117132" duration="8397000" />
+      <workItem from="1658506425664" duration="2917000" />
     </task>
     <servers />
   </component>
@@ -261,10 +285,55 @@
           <line>24</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/io/undertow/undertow-servlet/2.2.18.Final/undertow-servlet-2.2.18.Final-sources.jar!/io/undertow/servlet/core/DeploymentManagerImpl.java</url>
+          <line>520</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/io/undertow/undertow-servlet/2.2.18.Final/undertow-servlet-2.2.18.Final-sources.jar!/io/undertow/servlet/handlers/security/SecurityPathMatches.java</url>
+          <line>241</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/io/undertow/undertow-servlet/2.2.18.Final/undertow-servlet-2.2.18.Final-sources.jar!/io/undertow/servlet/core/DeploymentManagerImpl.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.7.1/spring-boot-2.7.1-sources.jar!/org/springframework/boot/web/embedded/undertow/UndertowServletWebServerFactory.java</url>
+          <line>303</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.7.1/spring-boot-2.7.1-sources.jar!/org/springframework/boot/web/servlet/context/ServletWebServerApplicationContext.java</url>
+          <line>179</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.7.1/spring-boot-2.7.1-sources.jar!/org/springframework/boot/web/servlet/context/ServletWebServerApplicationContext.java</url>
+          <line>209</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.7.1/spring-boot-2.7.1-sources.jar!/org/springframework/boot/web/server/ErrorPageRegistrarBeanPostProcessor.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.7.1/spring-boot-autoconfigure-2.7.1-sources.jar!/org/springframework/boot/autoconfigure/web/servlet/error/ErrorMvcAutoConfiguration.java</url>
+          <line>267</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseConfig.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="71" />
+          <line>48</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtErrorController.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java</url>
@@ -285,6 +354,12 @@
             <option name="WATCH_ACCESS" value="true" />
           </properties>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/io/undertow/undertow-servlet/2.2.18.Final/undertow-servlet-2.2.18.Final-sources.jar!/io/undertow/servlet/api/DeploymentInfo.java</url>
+          <line>136</line>
+          <properties field="errorPages" class="io.undertow.servlet.api.DeploymentInfo" />
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.21/spring-web-5.3.21.jar!/org/springframework/http/converter/json/AbstractJackson2HttpMessageConverter.class</url>

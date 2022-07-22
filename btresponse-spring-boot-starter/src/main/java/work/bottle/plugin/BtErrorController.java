@@ -31,7 +31,7 @@ import java.util.Map;
 
 @Controller
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
-@RequestMapping("${server.error.path:${error.path:/____error}}")
+@RequestMapping("${server.error.path:${error.path:/error}}")
 public class BtErrorController extends AbstractErrorController {
     private static final Logger logger = LoggerFactory.getLogger(BtErrorController.class);
 
@@ -73,7 +73,10 @@ public class BtErrorController extends AbstractErrorController {
             logger.debug("force to return BtResponse json error");
             return error(request);
         }
-        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}", request.getLocalAddr(), request.getMethod(), request.getRequestURL());
+        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n", request.getRemoteHost(),
+                request.getMethod(),
+                request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI),
+                request.getAttribute(RequestDispatcher.ERROR_MESSAGE));
         HttpStatus status = getStatus(request);
         Map<String, Object> model = Collections
                 .unmodifiableMap(getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.TEXT_HTML)));
@@ -84,7 +87,10 @@ public class BtErrorController extends AbstractErrorController {
 
     @RequestMapping
     public ResponseEntity<BtResponse> error(HttpServletRequest request) {
-        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}", request.getLocalAddr(), request.getMethod(), request.getRequestURL());
+        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n", request.getRemoteHost(),
+                request.getMethod(),
+                request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI),
+                request.getAttribute(RequestDispatcher.ERROR_MESSAGE));
         Throwable e = (Throwable) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

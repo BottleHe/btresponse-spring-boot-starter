@@ -1,5 +1,7 @@
 server:
   port: 17712
+  error:
+    path: /____error
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -17,3 +19,6 @@ mybatis:
 
 bt-response:
   enable: true
+
+
+

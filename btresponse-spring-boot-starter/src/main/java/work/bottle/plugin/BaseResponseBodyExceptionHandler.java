@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import work.bottle.plugin.exception.OperationException;
+import work.bottle.plugin.exception.ServerException;
 import work.bottle.plugin.model.BtResponse;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,12 +59,22 @@ public class BaseResponseBodyExceptionHandler {
                 null, e.getMessage()), HttpStatus.OK);
     }
 
+    @ExceptionHandler(ServerException.class)
+    @ResponseBody
+    public ResponseEntity<BtResponse> serverExceptionHandler(ServerException e,
+                                                                HttpServletRequest request,
+                                                                HttpServletResponse response) {
+        response.reset();
+        return new ResponseEntity<>(new BtResponse(false, e.getCode(),
+                e.getData(), e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(OperationException.class)
     @ResponseBody
     public ResponseEntity<BtResponse> operationExceptionHandler(OperationException e,
                                                                HttpServletRequest request,
                                                                HttpServletResponse response) {
-
+        response.reset();
         return new ResponseEntity<>(new BtResponse(false, e.getCode(),
                 e.getData(), e.getMessage()), HttpStatus.OK);
     }
@@ -74,8 +85,9 @@ public class BaseResponseBodyExceptionHandler {
                                                                           HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[MissingRequestValueExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
+        int status = response.getStatus();
         response.reset();
-        return new ResponseEntity<>(new BtResponse(response.getStatus(), e.getMessage()), HttpStatus.resolve(response.getStatus()));
+        return new ResponseEntity<>(new BtResponse(status, e.getMessage()), HttpStatus.resolve(status));
     }
 
     @ExceptionHandler(Throwable.class)
@@ -83,7 +95,8 @@ public class BaseResponseBodyExceptionHandler {
     public ResponseEntity<BtResponse> baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[Springboot Default ExceptionHandler]", t);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
+        int status = response.getStatus();
         response.reset();
-        return new ResponseEntity<>(new BtResponse(response.getStatus(), "Internal Server Error"), HttpStatus.resolve(response.getStatus()));
+        return new ResponseEntity<>(new BtResponse(status, "Internal Server Error"), HttpStatus.resolve(status));
     }
 }
