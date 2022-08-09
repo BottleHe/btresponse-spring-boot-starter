@@ -24,10 +24,7 @@ import work.bottle.plugin.model.BtResponse;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
@@ -73,10 +70,11 @@ public class BtErrorController extends AbstractErrorController {
             logger.debug("force to return BtResponse json error");
             return error(request);
         }
-        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n", request.getRemoteHost(),
+        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n{} ({})", request.getRemoteHost(),
                 request.getMethod(),
                 request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI),
-                request.getAttribute(RequestDispatcher.ERROR_MESSAGE));
+                request.getAttribute(RequestDispatcher.ERROR_MESSAGE),
+                request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));
         HttpStatus status = getStatus(request);
         Map<String, Object> model = Collections
                 .unmodifiableMap(getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.TEXT_HTML)));
@@ -87,10 +85,16 @@ public class BtErrorController extends AbstractErrorController {
 
     @RequestMapping
     public ResponseEntity<BtResponse> error(HttpServletRequest request) {
-        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n", request.getRemoteHost(),
+        logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n{} ({})", request.getRemoteHost(),
                 request.getMethod(),
                 request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI),
-                request.getAttribute(RequestDispatcher.ERROR_MESSAGE));
+                request.getAttribute(RequestDispatcher.ERROR_MESSAGE),
+                request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));
+//        Enumeration<String> attributeNames = request.getAttributeNames();
+//        while (attributeNames.hasMoreElements()) {
+//            String s = attributeNames.nextElement();
+//            logger.info("{}: {}", s, request.getAttribute(s));
+//        }
         Throwable e = (Throwable) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
