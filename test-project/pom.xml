@@ -16,6 +16,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <mybatis.spring.boot.starter.version>2.2.2</mybatis.spring.boot.starter.version>
         <druid.spring.boot.starter.version>1.2.9</druid.spring.boot.starter.version>
+        <btresponse.starter.versoin>1.0.10</btresponse.starter.versoin>
     </properties>
     <dependencies>
         <dependency>
@@ -53,7 +54,16 @@
         <dependency>
             <groupId>work.bottle.plugin</groupId>
             <artifactId>btresponse-spring-boot-starter</artifactId>
-            <version>1.0.6</version>
+            <version>${btresponse.starter.versoin}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 </project>

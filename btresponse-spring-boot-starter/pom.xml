@@ -8,18 +8,14 @@
     <url>https://github.com/BottleHe/web-btresponse.git</url>
     <artifactId>btresponse-spring-boot-starter</artifactId>
     <groupId>work.bottle.plugin</groupId>
-    <version>1.0.9</version>
+    <version>1.0.10</version>
     <description>Extend Springboot-web/Servlet functionality to provide configurable, unified data return format and exception handling return format.</description>
-    <parent>
-        <artifactId>spring-boot-parent</artifactId>
-        <groupId>org.springframework.boot</groupId>
-        <version>2.7.1</version>
-        <relativePath   />
-    </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <btresponse-core.version>1.0.3</btresponse-core.version>
+        <spring-boot.version>2.7.1</spring-boot.version>
     </properties>
     <licenses>
         <license>
@@ -54,6 +50,19 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot,not include plugin
+                    management as the parent import style -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,7 +80,7 @@
             <groupId>work.bottle.plugin</groupId>
             <artifactId>btresponse-core</artifactId>
             <scope>compile</scope>
-            <version>1.0.2</version>
+            <version>${btresponse-core.version}</version>
         </dependency>
     </dependencies>
     <build>

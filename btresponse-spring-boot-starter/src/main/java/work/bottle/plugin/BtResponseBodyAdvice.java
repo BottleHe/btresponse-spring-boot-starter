@@ -2,18 +2,10 @@ package work.bottle.plugin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
@@ -22,13 +14,19 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.model.BtResponse;
+import work.bottle.plugin.exception.ServerException;
 
 
 @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 public class BtResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     private static final Logger logger = LoggerFactory.getLogger(BtResponseBodyAdvice.class);
+
+    private final StandardResponseFactory standardResponseFactory;
+
+    public BtResponseBodyAdvice(StandardResponseFactory standardResponseFactory) {
+        this.standardResponseFactory = standardResponseFactory;
+    }
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -54,21 +52,22 @@ public class BtResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         try {
             if (null == body) {
                 logger.debug("body is null");
-                return new BtResponse();
+                return standardResponseFactory.produceDefaultResponse();
             }
-            if (body instanceof BtResponse) {
+            if (standardResponseFactory.isInstance(body)) {
                 return body;
             }
             logger.debug("body type: {}" + body.getClass().getName());
-            return new BtResponse(0, body);
+            return standardResponseFactory.produceResponse(0, StandardResponseFactory.EMPTY_STR, body);
         } catch (Throwable t) {
             logger.warn("[Springboot ExceptionHandler]", t);
             if (t instanceof OperationException)
             {
-                return new BtResponse(false, ((OperationException) t).getCode(),
-                        ((OperationException) t).getData(), t.getMessage());
+                return standardResponseFactory.produceErrorResponse((OperationException) t);
+            } else if (t instanceof ServerException) {
+                return standardResponseFactory.produceErrorResponse((ServerException) t);
             }
-            return new BtResponse(500, "Internal Server Error");
+            return standardResponseFactory.produceResponse(500, "Internal Server Error", null);
         }
     }
 }

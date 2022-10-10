@@ -20,6 +20,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.Servlet;
 import java.util.stream.Collectors;
 
+@ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 @AutoConfiguration(before = WebMvcAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass({ Servlet.class, DispatcherServlet.class })
@@ -40,6 +41,12 @@ public class BtResponseConfig {
         return new DefaultErrorAttributes();
     }
 
+    @Bean
+    @ConditionalOnMissingBean(value = StandardResponseFactory.class)
+    public StandardResponseFactory standardResponseFactory() {
+        return new BtResponseFactory();
+    }
+
     /**
      * 定义一个处理tomcat 异常处理的Bean. 方式1
      * 我这里有注入时机问题, 所以通过 ApplicationContextInitializer 直接注入singleton
@@ -58,9 +65,10 @@ public class BtResponseConfig {
 
     @Bean
     @ConditionalOnMissingBean(value = ErrorController.class, search = SearchStrategy.CURRENT)
-    public BtErrorController btErrorController(ErrorAttributes errorAttributes,
+    public BtErrorController btErrorController(StandardResponseFactory standardResponseFactory,
+                                               ErrorAttributes errorAttributes,
                                                ObjectProvider<ErrorViewResolver> errorViewResolvers) {
-        return new BtErrorController(errorAttributes, this.serverProperties.getError(), this.btResponseProperties,
+        return new BtErrorController(standardResponseFactory, errorAttributes, this.serverProperties.getError(), this.btResponseProperties,
                 errorViewResolvers.orderedStream().collect(Collectors.toList()));
     }
 }

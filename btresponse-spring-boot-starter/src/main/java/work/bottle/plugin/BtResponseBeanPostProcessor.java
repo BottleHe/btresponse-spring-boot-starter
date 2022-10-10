@@ -10,6 +10,7 @@ import org.springframework.http.converter.support.AllEncompassingFormHttpMessage
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @ConditionalOnBean({ RequestMappingHandlerAdapter.class })
 @ConditionalOnExpression("${bt-response.enable:true} && ${bt-response.force:false}")
 public class BtResponseBeanPostProcessor implements BeanPostProcessor {
+
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof RequestMappingHandlerAdapter && beanName.equals("requestMappingHandlerAdapter")) {
@@ -37,7 +39,7 @@ public class BtResponseBeanPostProcessor implements BeanPostProcessor {
 
     protected final void addDefaultHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
         messageConverters.add(new ByteArrayHttpMessageConverter());
-        messageConverters.add(new StringHttpMessageConverter());
+        messageConverters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
         messageConverters.add(new ResourceHttpMessageConverter());
         messageConverters.add(new ResourceRegionHttpMessageConverter());
         messageConverters.add(new AllEncompassingFormHttpMessageConverter());

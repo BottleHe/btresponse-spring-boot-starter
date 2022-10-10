@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import work.bottle.plugin.exception.OperationException;
 import work.bottle.plugin.exception.ServerException;
-import work.bottle.plugin.model.BtResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +27,15 @@ import java.util.List;
 public class BaseResponseBodyExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(BaseResponseBodyExceptionHandler.class);
 
+    private final StandardResponseFactory standardResponseFactory;
+
+    public BaseResponseBodyExceptionHandler(StandardResponseFactory standardResponseFactory) {
+        this.standardResponseFactory = standardResponseFactory;
+    }
+
     @ExceptionHandler(BindException.class)
     @ResponseBody
-    public ResponseEntity<BtResponse> bindExceptionHandler(BindException e, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity bindExceptionHandler(BindException e, HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[BindExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         response.reset();
@@ -40,63 +45,67 @@ public class BaseResponseBodyExceptionHandler {
             if (errors != null) {
                 if (0 < errors.size()) {
                     FieldError fieldError = (FieldError) errors.get(0);
-                    return new ResponseEntity<>(new BtResponse(false, 100004,
-                            null, fieldError.getDefaultMessage()), HttpStatus.OK);
+                    return standardResponseFactory.produceResponseEntity(false, 10004,
+                            fieldError.getDefaultMessage(), null, HttpStatus.OK, null);
                 }
             }
         }
-        return new ResponseEntity<>(new BtResponse(false, 100004,
-                null, e.getMessage()), HttpStatus.OK);
+        return standardResponseFactory.produceResponseEntity(false, 10004,
+                e.getMessage(), null, HttpStatus.OK, null);
     }
 
     @ExceptionHandler(ValidationException.class)
     @ResponseBody
-    public ResponseEntity<BtResponse> validationExceptionHandler(ValidationException e, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity validationExceptionHandler(ValidationException e, HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[ValidationExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         response.reset();
-        return new ResponseEntity<>(new BtResponse(false, 100004,
-                null, e.getMessage()), HttpStatus.OK);
+        return standardResponseFactory.produceResponseEntity(false, 10004,
+                e.getMessage(), null, HttpStatus.OK, null);
     }
 
     @ExceptionHandler(ServerException.class)
     @ResponseBody
-    public ResponseEntity<BtResponse> serverExceptionHandler(ServerException e,
+    public ResponseEntity serverExceptionHandler(ServerException e,
                                                                 HttpServletRequest request,
                                                                 HttpServletResponse response) {
         response.reset();
-        return new ResponseEntity<>(new BtResponse(false, e.getCode(),
-                e.getData(), e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        return standardResponseFactory.produceResponseEntity(false, e.getCode(),
+                e.getMessage(), e.getData(), HttpStatus.INTERNAL_SERVER_ERROR, null);
     }
 
     @ExceptionHandler(OperationException.class)
     @ResponseBody
-    public ResponseEntity<BtResponse> operationExceptionHandler(OperationException e,
+    public ResponseEntity operationExceptionHandler(OperationException e,
                                                                HttpServletRequest request,
                                                                HttpServletResponse response) {
         response.reset();
-        return new ResponseEntity<>(new BtResponse(false, e.getCode(),
-                e.getData(), e.getMessage()), HttpStatus.OK);
+        return standardResponseFactory.produceResponseEntity(false, e.getCode(),
+                e.getMessage(), e.getData(), HttpStatus.OK, null);
+
     }
 
     @ExceptionHandler(MissingRequestValueException.class)
     @ResponseBody
-    public ResponseEntity<BtResponse> missingRequestValueExceptionHandler(MissingRequestValueException e,
+    public ResponseEntity missingRequestValueExceptionHandler(MissingRequestValueException e,
                                                                           HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[MissingRequestValueExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         int status = response.getStatus();
         response.reset();
-        return new ResponseEntity<>(new BtResponse(status, e.getMessage()), HttpStatus.resolve(status));
+
+        return standardResponseFactory.produceResponseEntity(false, status,
+                e.getMessage(), null, HttpStatus.resolve(status), null);
     }
 
-    @ExceptionHandler(Throwable.class)
-    @ResponseBody
-    public ResponseEntity<BtResponse> baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
-        logger.warn("[Springboot Default ExceptionHandler]", t);
-        // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
-        int status = response.getStatus();
-        response.reset();
-        return new ResponseEntity<>(new BtResponse(status, "Internal Server Error"), HttpStatus.resolve(status));
-    }
+    // 很多异常涉及HTTP返回, 暂时不再处理它
+//    @ExceptionHandler(Throwable.class)
+//    @ResponseBody
+//    public ResponseEntity baseExceptionHandler(Throwable t, HttpServletRequest request, HttpServletResponse response) {
+//        logger.warn("[Springboot Default ExceptionHandler]", t);
+//        // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
+//        // int status = response.getStatus();
+//        response.reset();
+//        return standardResponseFactory.produceErrorResponseEntity(t, HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 }

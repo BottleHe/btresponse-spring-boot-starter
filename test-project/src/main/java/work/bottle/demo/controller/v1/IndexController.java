@@ -89,7 +89,6 @@ public class IndexController {
     }
 
     @GetMapping("/ret/null")
-    @Ignore
     public Object retNull() {
         return null;
     }
@@ -107,6 +106,7 @@ public class IndexController {
     @GetMapping("/ret/nobj")
     public Object nobj() {
         return new Object();
+        // return "heha";
     }
 
     @GetMapping("/err/exception")

@@ -1,6 +1,6 @@
 package work.bottle.plugin.model;
 
-public class BtResponse {
+public final class BtResponse {
 
     private boolean success;
     private int code;

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.model.BtResponse;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +33,7 @@ public class BtErrorController extends AbstractErrorController {
 
     private final ErrorProperties errorProperties;
     private final BtResponseProperties btResponseProperties;
+    private final StandardResponseFactory standardResponseFactory;
 
     /**
      * Create a new {@link BtErrorController} instance.
@@ -41,8 +41,8 @@ public class BtErrorController extends AbstractErrorController {
      * @param errorProperties configuration properties
      * @param btResponseProperties btResponseProperties
      */
-    public BtErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties, BtResponseProperties btResponseProperties) {
-        this(errorAttributes, errorProperties, btResponseProperties, Collections.emptyList());
+    public BtErrorController(StandardResponseFactory standardResponseFactory, ErrorAttributes errorAttributes, ErrorProperties errorProperties, BtResponseProperties btResponseProperties) {
+        this(standardResponseFactory, errorAttributes, errorProperties, btResponseProperties, Collections.emptyList());
     }
 
     /**
@@ -52,7 +52,8 @@ public class BtErrorController extends AbstractErrorController {
      * @param btResponseProperties btResponseProperties
      * @param errorViewResolvers error view resolvers
      */
-    public BtErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties,
+    public BtErrorController(StandardResponseFactory standardResponseFactory,
+                             ErrorAttributes errorAttributes, ErrorProperties errorProperties,
                              BtResponseProperties btResponseProperties,
                              List<ErrorViewResolver> errorViewResolvers) {
         super(errorAttributes, errorViewResolvers);
@@ -60,6 +61,7 @@ public class BtErrorController extends AbstractErrorController {
         Assert.notNull(btResponseProperties, "BtResponseProperties must not be null");
         this.errorProperties = errorProperties;
         this.btResponseProperties = btResponseProperties;
+        this.standardResponseFactory = standardResponseFactory;
     }
 
     @RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
@@ -84,7 +86,7 @@ public class BtErrorController extends AbstractErrorController {
     }
 
     @RequestMapping
-    public ResponseEntity<BtResponse> error(HttpServletRequest request) {
+    public ResponseEntity error(HttpServletRequest request) {
         logger.error("[Out of springboot exception]:\n{} -> [{}]:{}\n{} ({})", request.getRemoteHost(),
                 request.getMethod(),
                 request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI),
@@ -104,17 +106,18 @@ public class BtErrorController extends AbstractErrorController {
             if (null != cause) {
                 // logger.error("  -- {}", cause);
                 if (cause instanceof OperationException) {
-                    return new ResponseEntity<>(new BtResponse(false, ((OperationException) cause).getCode(),
-                            ((OperationException) cause).getData(), cause.getMessage()), HttpStatus.OK);
+                    return standardResponseFactory.produceErrorResponseEntity((OperationException) cause);
                 }
             }
         }
         Map<String, Object> body = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.ALL));
         HttpStatus status = getStatus(request);
-        BtResponse ret = new BtResponse(false, status.value(), body, (String) body.getOrDefault("error", "Internal server error"));
+        ResponseEntity responseEntity = standardResponseFactory.produceResponseEntity(false,
+                status.value(), (String) body.getOrDefault("error", "Internal server error"), body, status, headers);
+
         body.remove("error");
         body.remove("status");
-        return new ResponseEntity<>(ret, headers, status);
+        return responseEntity;
     }
 
     @ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
