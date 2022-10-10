@@ -118,6 +118,11 @@ public class ServerException extends RuntimeException {
 ### 一. Maven引入
 
 ```xml
+<!-- 项目依赖于 validation -->
+<dependency>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
 <dependency>
     <groupId>work.bottle.plugin</groupId>
     <artifactId>btresponse-spring-boot-starter</artifactId>
