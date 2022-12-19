@@ -7,6 +7,7 @@ import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.OperationException;
 
+import javax.validation.constraints.Pattern;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController

@@ -21,6 +21,7 @@ import javax.validation.ValidationException;
 import org.springframework.validation.BindException;
 
 import java.util.List;
+import java.util.Optional;
 
 @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
@@ -71,7 +72,9 @@ public class BaseResponseBodyExceptionHandler {
                                                                 HttpServletResponse response) {
         response.reset();
         return standardResponseFactory.produceResponseEntity(false, e.getCode(),
-                e.getMessage(), e.getData(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+                e.getMessage(), e.getData(),
+                Optional.ofNullable(HttpStatus.resolve(e.getCode())).orElse(HttpStatus.INTERNAL_SERVER_ERROR),
+                null);
     }
 
     @ExceptionHandler(OperationException.class)

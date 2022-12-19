@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test-project/src/test/java/work/bottle/demo/others/HttpStatusTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +100,23 @@
       <recent name="work.bottle.plugin" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IndexForceControllerTest">
+  <component name="RunManager" selected="JUnit.HttpStatusTest.testResolveHttpStatus">
+    <configuration name="HttpStatusTest.testResolveHttpStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="work.bottle.demo.others.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="work.bottle.demo.others" />
+      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.others.HttpStatusTest" />
+      <option name="METHOD_NAME" value="testResolveHttpStatus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="IndexCustomControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
@@ -123,22 +143,6 @@
       <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
       <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexCustomControllerTest" />
       <option name="METHOD_NAME" value="testPathVariable" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IndexCustomControllerTest.testRetInteger" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="work.bottle.demo.controller.v1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexCustomControllerTest" />
-      <option name="METHOD_NAME" value="testRetInteger" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -218,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HttpStatusTest.testResolveHttpStatus" />
         <item itemvalue="JUnit.IndexForceControllerTest" />
         <item itemvalue="JUnit.IndexCustomForceControllerTest" />
         <item itemvalue="JUnit.IndexCustomControllerTest" />
         <item itemvalue="JUnit.IndexCustomControllerTest.testPathVariable" />
-        <item itemvalue="JUnit.IndexCustomControllerTest.testRetInteger" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +274,17 @@
       <workItem from="1659584174600" duration="96000" />
       <workItem from="1660024414037" duration="1690000" />
       <workItem from="1660540713666" duration="1523000" />
-      <workItem from="1665328694049" duration="26309000" />
+      <workItem from="1665328694049" duration="26737000" />
+      <workItem from="1665734250717" duration="243000" />
+      <workItem from="1666252954331" duration="732000" />
+      <workItem from="1667389782288" duration="545000" />
+      <workItem from="1668741643798" duration="1024000" />
+      <workItem from="1669458373856" duration="609000" />
+      <workItem from="1669460068854" duration="646000" />
+      <workItem from="1671091892473" duration="2587000" />
+      <workItem from="1671183024644" duration="1201000" />
+      <workItem from="1671350678229" duration="1702000" />
+      <workItem from="1671440051156" duration="583000" />
     </task>
     <servers />
   </component>
@@ -328,7 +342,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java</url>
-          <line>139</line>
+          <line>140</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
