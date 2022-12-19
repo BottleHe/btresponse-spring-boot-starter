@@ -6,6 +6,8 @@ import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.OperationException;
+import work.bottle.plugin.exception.server.HttpInsufficientStorageException;
+import work.bottle.plugin.exception.server.HttpNotFoundException;
 
 import javax.validation.constraints.Pattern;
 import java.util.concurrent.ThreadLocalRandom;
@@ -143,5 +145,17 @@ public class IndexController {
         verificationData.setExpireTimestamp((int)(System.currentTimeMillis() / 1000) + 300); // 5分钟过期
         verificationData.setExpireTimestamp((int)(System.currentTimeMillis() / 1000) + 60); // 1分钟后支持重发
         return verificationData;
+    }
+
+    @GetMapping("/e/s/404")
+    public String e404() {
+        if (true) throw new HttpNotFoundException();
+        return "done";
+    }
+
+    @GetMapping("/e/s/507")
+    public String e507() {
+        if (true) throw HttpInsufficientStorageException.Default;
+        return "done";
     }
 }

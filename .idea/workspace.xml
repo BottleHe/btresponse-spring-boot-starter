@@ -5,10 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test-project/src/test/java/work/bottle/demo/others/HttpStatusTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpBadGatewayException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpBadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpBandwidthLimitExceededException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpConflictException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpDestinationLockedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpExpectationFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpFailedDependencyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpForbiddenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpGatewayTimeoutException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpGoneException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpHttpVersionNotSupportedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpIAmATeapotException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpInsufficientSpaceOnResourceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpInsufficientStorageException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpInternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpLengthRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpLockedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpLoopDetectedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpMethodFailureException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpMethodNotAllowedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpNetworkAuthenticationRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpNotAcceptableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpNotExtendedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpNotImplementedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpPayloadTooLargeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpPaymentRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpPreconditionFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpPreconditionRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpProxyAuthenticationRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpRequestEntityTooLargeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpRequestHeaderFieldsTooLargeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpRequestTimeoutException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpRequestUriTooLongException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpRequestedRangeNotSatisfiableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpServiceUnavailableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpTooEarlyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpTooManyRequestsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpUnauthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpUnavailableForLegalReasonsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpUnprocessableEntityException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpUnsupportedMediaTypeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpUpgradeRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpUriTooLongException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/btresponse-core/src/main/java/work/bottle/plugin/exception/server/HttpVariantAlsoNegotiatesException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/error-import/HttpStatus.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/error-import/import-server-exception.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-starter-projects.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BaseResponseBodyExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/src/test/java/work/bottle/demo/controller/v1/IndexControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/test/java/work/bottle/demo/controller/v1/IndexControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/target/classes/work/bottle/demo/controller/v1/IndexController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,9 +69,11 @@
         <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -54,12 +103,16 @@
     </option>
   </component>
   <component name="ProjectId" id="2AZLaoA3fITh21A35HMdKpOK1uN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -68,10 +121,12 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.format.on.save.advertiser.fired" value="true" />
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/model" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -85,6 +140,9 @@
       <recent name="$PROJECT_DIR$/test-project/src/main/resources/work/bottle/demo/mapper" />
       <recent name="$PROJECT_DIR$/test-project/src/main/resources" />
       <recent name="$PROJECT_DIR$/test-project/src/main/java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/error-import" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="work.bottle.demo" />
@@ -100,7 +158,15 @@
       <recent name="work.bottle.plugin" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HttpStatusTest.testResolveHttpStatus">
+  <component name="RunManager" selected="JUnit.IndexControllerTest.testE404Exception">
+    <configuration name="go build import-server-exception.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-starter-projects" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/error-import/import-server-exception.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="HttpStatusTest.testResolveHttpStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
@@ -117,7 +183,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IndexCustomControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IndexControllerTest.testE404Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
         <pattern>
@@ -126,29 +192,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexCustomControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IndexCustomControllerTest.testPathVariable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="work.bottle.demo.controller.v1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexCustomControllerTest" />
-      <option name="METHOD_NAME" value="testPathVariable" />
+      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexControllerTest" />
+      <option name="METHOD_NAME" value="testE404Exception" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IndexCustomForceControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IndexControllerTest.testE507Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
         <pattern>
@@ -157,8 +208,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexCustomForceControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexControllerTest" />
+      <option name="METHOD_NAME" value="testE507Exception" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -222,11 +274,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IndexControllerTest.testE404Exception" />
+        <item itemvalue="JUnit.IndexControllerTest.testE507Exception" />
+        <item itemvalue="Go Build.go build import-server-exception.go" />
         <item itemvalue="JUnit.HttpStatusTest.testResolveHttpStatus" />
         <item itemvalue="JUnit.IndexForceControllerTest" />
-        <item itemvalue="JUnit.IndexCustomForceControllerTest" />
-        <item itemvalue="JUnit.IndexCustomControllerTest" />
-        <item itemvalue="JUnit.IndexCustomControllerTest.testPathVariable" />
       </list>
     </recent_temporary>
   </component>
@@ -284,12 +336,15 @@
       <workItem from="1671091892473" duration="2587000" />
       <workItem from="1671183024644" duration="1201000" />
       <workItem from="1671350678229" duration="1702000" />
-      <workItem from="1671440051156" duration="583000" />
+      <workItem from="1671440051156" duration="5950000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -342,7 +397,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/IndexController.java</url>
-          <line>140</line>
+          <line>142</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

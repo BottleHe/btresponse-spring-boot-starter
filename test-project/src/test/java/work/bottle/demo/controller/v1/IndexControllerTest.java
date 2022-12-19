@@ -336,4 +336,29 @@ class IndexControllerTest {
         logger.info("返回OperationException<10100>测试(GET {}): {}", uri, contentAsString);
         Assert.assertEquals("返回OperationException<10100>测试(GET " + uri + "), 结果异常", "{\"success\":false,\"code\":10100,\"data\":null,\"message\":\"Operation Exception\"}", contentAsString);
     }
+
+    @Test
+    public void testE404Exception() throws Exception {
+        final String uri = "/index/v1/e/s/404";
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =
+                MockMvcRequestBuilders.get(uri);
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder);
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assert.assertEquals("not 404", 404, status);
+    }
+
+
+    @Test
+    public void testE507Exception() throws Exception {
+        final String uri = "/index/v1/e/s/507";
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =
+                MockMvcRequestBuilders.get(uri);
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder);
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assert.assertEquals("not 507", 507, status);
+    }
 }
