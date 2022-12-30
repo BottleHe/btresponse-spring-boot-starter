@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cda84cb-bbe2-4769-baef-764fa7d1c606" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/controller/v1/MethodIgnoreController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-project/src/test/java/work/bottle/demo/controller/v1/MethodIgnoreControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/btresponse-spring-boot-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test-project/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +22,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Go File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -109,31 +112,7 @@
       <recent name="work.bottle.plugin" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IndexControllerTest.testE404Exception">
-    <configuration name="go build import-server-exception.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="spring-boot-starter-projects" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/error-import/import-server-exception.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="HttpStatusTest.testResolveHttpStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="work.bottle.demo.others.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="work.bottle.demo.others" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.others.HttpStatusTest" />
-      <option name="METHOD_NAME" value="testResolveHttpStatus" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.HotelBaseServiceStartup">
     <configuration name="IndexControllerTest.testE404Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
@@ -150,7 +129,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IndexControllerTest.testE507Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MethodIgnoreControllerTest.testGetAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
         <pattern>
@@ -159,14 +138,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexControllerTest" />
-      <option name="METHOD_NAME" value="testE507Exception" />
+      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.MethodIgnoreControllerTest" />
+      <option name="METHOD_NAME" value="testGetAccount" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IndexForceControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MethodIgnoreControllerTest.testGetByteArr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-project" />
       <extension name="coverage">
         <pattern>
@@ -175,8 +154,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
-      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.IndexForceControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.MethodIgnoreControllerTest" />
+      <option name="METHOD_NAME" value="testGetByteArr" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MethodIgnoreControllerTest.testGetStr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="work.bottle.demo.controller.v1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="work.bottle.demo.controller.v1" />
+      <option name="MAIN_CLASS_NAME" value="work.bottle.demo.controller.v1.MethodIgnoreControllerTest" />
+      <option name="METHOD_NAME" value="testGetStr" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -223,13 +219,26 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="HotelBaseServiceStartup" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="test-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="work.bottle.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.bottle.demo.HotelBaseServiceStartup" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.HotelBaseServiceStartup" />
+        <item itemvalue="JUnit.MethodIgnoreControllerTest.testGetAccount" />
+        <item itemvalue="JUnit.MethodIgnoreControllerTest.testGetStr" />
+        <item itemvalue="JUnit.MethodIgnoreControllerTest.testGetByteArr" />
         <item itemvalue="JUnit.IndexControllerTest.testE404Exception" />
-        <item itemvalue="JUnit.IndexControllerTest.testE507Exception" />
-        <item itemvalue="Go Build.go build import-server-exception.go" />
-        <item itemvalue="JUnit.HttpStatusTest.testResolveHttpStatus" />
-        <item itemvalue="JUnit.IndexForceControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +296,13 @@
       <workItem from="1671091892473" duration="2587000" />
       <workItem from="1671183024644" duration="1201000" />
       <workItem from="1671350678229" duration="1702000" />
-      <workItem from="1671440051156" duration="6017000" />
+      <workItem from="1671440051156" duration="6238000" />
+      <workItem from="1671446570274" duration="604000" />
+      <workItem from="1671529952581" duration="1393000" />
+      <workItem from="1671605206559" duration="704000" />
+      <workItem from="1671699350398" duration="1759000" />
+      <workItem from="1671849414797" duration="1207000" />
+      <workItem from="1672374792848" duration="2600000" />
     </task>
     <servers />
   </component>
@@ -362,11 +377,6 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtMappingJackson2HttpMessageConverter.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/io/undertow/undertow-servlet/2.2.18.Final/undertow-servlet-2.2.18.Final-sources.jar!/io/undertow/servlet/core/DeploymentManagerImpl.java</url>
           <line>520</line>
           <option name="timeStamp" value="73" />
@@ -412,14 +422,14 @@
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtResponseBodyAdvice.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="86" />
+          <url>file://$PROJECT_DIR$/test-project/src/test/java/work/bottle/demo/controller/v1/MethodIgnoreControllerTest.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test-project/src/main/java/work/bottle/demo/config/BaseConfig.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="90" />
+          <url>file://$PROJECT_DIR$/btresponse-spring-boot-starter/src/main/java/work/bottle/plugin/BtMappingJackson2HttpMessageConverter.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.16/spring-webmvc-5.3.16-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java</url>
