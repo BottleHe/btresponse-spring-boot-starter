@@ -4,12 +4,10 @@ import org.springframework.web.bind.annotation.*;
 import work.bottle.demo.model.EmployeeAuth;
 import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.demo.model.VerificationData;
-import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.OperationException;
 import work.bottle.plugin.exception.server.HttpInsufficientStorageException;
 import work.bottle.plugin.exception.server.HttpNotFoundException;
 
-import javax.validation.constraints.Pattern;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
