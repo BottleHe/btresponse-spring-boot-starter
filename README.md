@@ -62,7 +62,7 @@ public class OperationException extends RuntimeException {
 }
 ```
 
-* work.bottle.plugin.exception.ServerException : 服务异常, Springboot拦截到这个异常及其派生异常. 都会处理成一个标准的错误返回格式. 并将它的code字段处理成 http status, 比如 500, 403等.
+* work.bottle.plugin.exception.GlobalException : 服务异常, Springboot拦截到这个异常及其派生异常. 都会处理成一个标准的错误返回格式. 并将它的code字段处理成 http status, 比如 500, 403等.
 
 ```java
 package work.bottle.plugin.exception;

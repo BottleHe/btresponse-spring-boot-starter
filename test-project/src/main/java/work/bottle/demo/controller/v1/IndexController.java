@@ -5,8 +5,8 @@ import work.bottle.demo.model.EmployeeAuth;
 import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.exception.server.HttpInsufficientStorageException;
-import work.bottle.plugin.exception.server.HttpNotFoundException;
+import work.bottle.plugin.exception.global.base.ConfigurationException;
+import work.bottle.plugin.exception.global.base.NotFoundException;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -146,14 +146,14 @@ public class IndexController {
     }
 
     @GetMapping("/e/s/404")
-    public String e404() {
-        if (true) throw new HttpNotFoundException();
+    public String e404() throws NotFoundException {
+        if (true) throw NotFoundException.Default;
         return "done";
     }
 
-    @GetMapping("/e/s/507")
-    public String e507() {
-        if (true) throw HttpInsufficientStorageException.Default;
+    @GetMapping("/e/s/506")
+    public String e506() throws ConfigurationException {
+        if (true) throw ConfigurationException.Default;
         return "done";
     }
 }

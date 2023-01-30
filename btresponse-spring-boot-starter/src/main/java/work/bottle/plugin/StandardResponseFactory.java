@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.util.MultiValueMap;
+import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.exception.ServerException;
 
 public interface StandardResponseFactory<T> {
     static final String EMPTY_STR = "";
@@ -24,7 +24,7 @@ public interface StandardResponseFactory<T> {
         return produceResponse(false, e.getCode(), e.getMessage(), e.getData());
     }
 
-    default T produceErrorResponse(ServerException e) {
+    default T produceErrorResponse(GlobalException e) {
         return produceResponse(false, e.getCode(), e.getMessage(), e.getData());
     }
 
@@ -37,7 +37,7 @@ public interface StandardResponseFactory<T> {
                 e.getData(), HttpStatus.OK, null);
     }
 
-    default ResponseEntity<T> produceErrorResponseEntity(ServerException e) {
+    default ResponseEntity<T> produceErrorResponseEntity(GlobalException e) {
         return produceResponseEntity(false, e.getCode(), e.getMessage(),
                 e.getData(), HttpStatus.INTERNAL_SERVER_ERROR, null);
     }

@@ -13,8 +13,8 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import work.bottle.plugin.annotation.Ignore;
+import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.exception.ServerException;
 
 
 @ControllerAdvice
@@ -64,8 +64,8 @@ public class BtResponseBodyAdvice implements ResponseBodyAdvice<Object> {
             if (t instanceof OperationException)
             {
                 return standardResponseFactory.produceErrorResponse((OperationException) t);
-            } else if (t instanceof ServerException) {
-                return standardResponseFactory.produceErrorResponse((ServerException) t);
+            } else if (t instanceof GlobalException) {
+                return standardResponseFactory.produceErrorResponse((GlobalException) t);
             }
             return standardResponseFactory.produceResponse(500, "Internal Server Error", null);
         }

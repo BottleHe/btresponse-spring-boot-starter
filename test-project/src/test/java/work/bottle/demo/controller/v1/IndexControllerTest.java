@@ -351,14 +351,14 @@ class IndexControllerTest {
 
 
     @Test
-    public void testE507Exception() throws Exception {
-        final String uri = "/index/v1/e/s/507";
+    public void testE506Exception() throws Exception {
+        final String uri = "/index/v1/e/s/506";
         MockHttpServletRequestBuilder mockHttpServletRequestBuilder =
                 MockMvcRequestBuilders.get(uri);
         ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder);
         MvcResult mvcResult = perform.andReturn();
         MockHttpServletResponse response = mvcResult.getResponse();
         int status = response.getStatus();
-        Assert.assertEquals("not 507", 507, status);
+        Assert.assertEquals("not 506", 506, status);
     }
 }

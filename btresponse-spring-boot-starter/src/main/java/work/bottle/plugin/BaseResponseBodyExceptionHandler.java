@@ -12,8 +12,8 @@ import org.springframework.web.bind.MissingRequestValueException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.exception.ServerException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,9 +29,12 @@ public class BaseResponseBodyExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(BaseResponseBodyExceptionHandler.class);
 
     private final StandardResponseFactory standardResponseFactory;
+    private final BtResponseProperties btResponseProperties;
 
-    public BaseResponseBodyExceptionHandler(StandardResponseFactory standardResponseFactory) {
+    public BaseResponseBodyExceptionHandler(StandardResponseFactory standardResponseFactory,
+                                            BtResponseProperties btResponseProperties) {
         this.standardResponseFactory = standardResponseFactory;
+        this.btResponseProperties = btResponseProperties;
     }
 
     @ExceptionHandler(BindException.class)
@@ -65,11 +68,11 @@ public class BaseResponseBodyExceptionHandler {
                 e.getMessage(), null, HttpStatus.OK, null);
     }
 
-    @ExceptionHandler(ServerException.class)
+    @ExceptionHandler(GlobalException.class)
     @ResponseBody
-    public ResponseEntity serverExceptionHandler(ServerException e,
-                                                                HttpServletRequest request,
-                                                                HttpServletResponse response) {
+    public ResponseEntity serverExceptionHandler(GlobalException e,
+                                                 HttpServletRequest request,
+                                                 HttpServletResponse response) {
         response.reset();
         return standardResponseFactory.produceResponseEntity(false, e.getCode(),
                 e.getMessage(), e.getData(),
