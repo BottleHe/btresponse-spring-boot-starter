@@ -34,18 +34,13 @@ public interface StandardResponseFactory<T> {
 
     default ResponseEntity<T> produceErrorResponseEntity(OperationException e) {
         return produceResponseEntity(false, e.getCode(), e.getMessage(),
-                e.getData(), HttpStatus.OK, null);
+                e.getData(), HttpStatus.OK.value(), null);
     }
 
-    default ResponseEntity<T> produceErrorResponseEntity(GlobalException e) {
-        return produceResponseEntity(false, e.getCode(), e.getMessage(),
-                e.getData(), HttpStatus.INTERNAL_SERVER_ERROR, null);
-    }
-
-    default ResponseEntity<T> produceErrorResponseEntity(Throwable t, HttpStatus httpStatus) {
-        return produceResponseEntity(false, httpStatus.value(), t.getMessage(), null, httpStatus, null);
+    default ResponseEntity<T> produceErrorResponseEntity(Throwable t, int httpStatus) {
+        return produceResponseEntity(false, httpStatus, t.getMessage(), null, httpStatus, null);
     }
 
     ResponseEntity<T> produceResponseEntity(boolean success, int code, String message,
-                                            Object data, HttpStatus httpStatus, @Nullable MultiValueMap<String, String> headers);
+                                            Object data, int httpStatus, @Nullable MultiValueMap<String, String> headers);
 }

@@ -1,7 +1,7 @@
 /**
 * 服务器在资源处理时出现配置错误.
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.server;
 
 import work.bottle.plugin.exception.GlobalException;
 

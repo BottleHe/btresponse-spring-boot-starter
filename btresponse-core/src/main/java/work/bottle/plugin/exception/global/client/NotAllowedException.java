@@ -1,7 +1,7 @@
 /**
 * 不允许访问, 通常因为用户身份, 来源等因素, 区别与Forbidden
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

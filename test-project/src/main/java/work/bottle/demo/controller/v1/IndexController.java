@@ -5,8 +5,11 @@ import work.bottle.demo.model.EmployeeAuth;
 import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.exception.OperationException;
-import work.bottle.plugin.exception.global.base.ConfigurationException;
-import work.bottle.plugin.exception.global.base.NotFoundException;
+import work.bottle.plugin.exception.global.client.InvalidPasswordException;
+import work.bottle.plugin.exception.global.client.NotFoundException;
+import work.bottle.plugin.exception.global.client.UnknownIdentityException;
+import work.bottle.plugin.exception.global.server.ConfigurationException;
+import work.bottle.plugin.exception.global.server.InsufficientException;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -154,6 +157,18 @@ public class IndexController {
     @GetMapping("/e/s/506")
     public String e506() throws ConfigurationException {
         if (true) throw ConfigurationException.Default;
+        return "done";
+    }
+
+    @GetMapping("/e/s/461")
+    public String e461() throws UnknownIdentityException {
+        if (true) throw UnknownIdentityException.Default;
+        return "done";
+    }
+
+    @GetMapping("/e/s/561")
+    public String e561() throws InsufficientException {
+        if (true) throw InsufficientException.Default;
         return "done";
     }
 }

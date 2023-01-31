@@ -1,7 +1,7 @@
 /**
 * 服务器处理业务时, 应具有一个前置状态, 但状态检查不通过的情况.
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

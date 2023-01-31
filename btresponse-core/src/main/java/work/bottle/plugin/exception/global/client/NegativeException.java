@@ -1,7 +1,7 @@
 /**
 * 请求被服务器拒绝, 原因未知
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

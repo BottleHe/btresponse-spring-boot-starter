@@ -1,7 +1,7 @@
 /**
 * 表示请求的内容还未能使用(一般是指时间过早)的异常
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

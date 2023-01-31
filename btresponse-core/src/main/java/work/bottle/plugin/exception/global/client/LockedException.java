@@ -1,7 +1,7 @@
 /**
 * 访问的资源被锁定
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

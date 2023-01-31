@@ -1,7 +1,7 @@
 /**
 * 服务器无法接受客户端的访问
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

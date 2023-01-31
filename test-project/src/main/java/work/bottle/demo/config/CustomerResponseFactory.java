@@ -25,7 +25,7 @@ public class CustomerResponseFactory implements StandardResponseFactory<CustomRe
     }
 
     @Override
-    public ResponseEntity<CustomResponse> produceResponseEntity(boolean success, int code, String message, Object data, HttpStatus httpStatus, MultiValueMap<String, String> headers) {
+    public ResponseEntity<CustomResponse> produceResponseEntity(boolean success, int code, String message, Object data, int httpStatus, MultiValueMap<String, String> headers) {
         return new ResponseEntity<CustomResponse>(new CustomResponse(code, message, data), headers, httpStatus);
     }
 }

@@ -1,7 +1,7 @@
 /**
 * 访问的资源/文件/数据等不存在时抛出的异常
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

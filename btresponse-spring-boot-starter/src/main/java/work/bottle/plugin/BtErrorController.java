@@ -113,7 +113,7 @@ public class BtErrorController extends AbstractErrorController {
         Map<String, Object> body = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.ALL));
         HttpStatus status = getStatus(request);
         ResponseEntity responseEntity = standardResponseFactory.produceResponseEntity(false,
-                status.value(), (String) body.getOrDefault("error", "Internal server error"), body, status, headers);
+                status.value(), (String) body.getOrDefault("error", "Internal server error"), body, status.value(), headers);
 
         body.remove("error");
         body.remove("status");
