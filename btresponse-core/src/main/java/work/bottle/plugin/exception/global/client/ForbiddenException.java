@@ -1,7 +1,7 @@
 /**
 * 一般是需要授权的接口, 用户访问时未被授权
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

@@ -18,10 +18,12 @@ import work.bottle.plugin.exception.OperationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ValidationException;
+
 import org.springframework.validation.BindException;
+import work.bottle.plugin.exception.global.client.UnprocessableException;
+import work.bottle.plugin.exception.global.client.UnsupportedException;
 
 import java.util.List;
-import java.util.Optional;
 
 @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
@@ -37,6 +39,15 @@ public class BaseResponseBodyExceptionHandler {
         this.btResponseProperties = btResponseProperties;
     }
 
+    /**
+     * 参数绑定异常, 处理方式同 work.bottle.plugin.exception.global.base.UnprocessableException
+     * error code 422
+     *
+     * @param e        异常内容
+     * @param request
+     * @param response
+     * @return
+     */
     @ExceptionHandler(BindException.class)
     @ResponseBody
     public ResponseEntity bindExceptionHandler(BindException e, HttpServletRequest request, HttpServletResponse response) {
@@ -49,60 +60,102 @@ public class BaseResponseBodyExceptionHandler {
             if (errors != null) {
                 if (0 < errors.size()) {
                     FieldError fieldError = (FieldError) errors.get(0);
-                    return standardResponseFactory.produceResponseEntity(false, 10004,
-                            fieldError.getDefaultMessage(), null, HttpStatus.OK, null);
+                    return standardResponseFactory.produceResponseEntity(false, UnprocessableException.Default.getCode(),
+                            fieldError.getDefaultMessage(), null,
+                            btResponseProperties.isLooseMode() /* 宽松模式时, 都应该是 200 */
+                                    ? HttpStatus.OK.value()
+                                    : UnprocessableException.Default.getCode(),
+                            null);
                 }
             }
         }
-        return standardResponseFactory.produceResponseEntity(false, 10004,
-                e.getMessage(), null, HttpStatus.OK, null);
+        return standardResponseFactory.produceResponseEntity(false, UnprocessableException.Default.getCode(),
+                e.getMessage(), null,
+                btResponseProperties.isLooseMode() /* 宽松模式时, 都应该是 200 */
+                        ? HttpStatus.OK.value()
+                        : UnprocessableException.Default.getCode(),
+                null);
     }
 
+    /**
+     * 参数验证异常 基于 javax. 处理方式同 work.bottle.plugin.exception.global.base.UnsupportedException
+     * error code 415
+     *
+     * @param e
+     * @param request
+     * @param response
+     * @return
+     */
     @ExceptionHandler(ValidationException.class)
     @ResponseBody
     public ResponseEntity validationExceptionHandler(ValidationException e, HttpServletRequest request, HttpServletResponse response) {
         logger.warn("[ValidationExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         response.reset();
-        return standardResponseFactory.produceResponseEntity(false, 10004,
-                e.getMessage(), null, HttpStatus.OK, null);
+        return standardResponseFactory.produceResponseEntity(false, UnsupportedException.Default.getCode(),
+                e.getMessage(), null,
+                btResponseProperties.isLooseMode() /* 宽松模式时, 都应该是 200 */
+                        ? HttpStatus.OK.value()
+                        : UnsupportedException.Default.getCode(),
+                null);
     }
 
+    /**
+     * 全局异常, 自带一个http status 或 code
+     *
+     * @param e
+     * @param request
+     * @param response
+     * @return
+     */
     @ExceptionHandler(GlobalException.class)
     @ResponseBody
-    public ResponseEntity serverExceptionHandler(GlobalException e,
+    public ResponseEntity globalExceptionHandler(GlobalException e,
                                                  HttpServletRequest request,
                                                  HttpServletResponse response) {
         response.reset();
         return standardResponseFactory.produceResponseEntity(false, e.getCode(),
                 e.getMessage(), e.getData(),
-                Optional.ofNullable(HttpStatus.resolve(e.getCode())).orElse(HttpStatus.INTERNAL_SERVER_ERROR),
+                btResponseProperties.isLooseMode() /* 宽松模式时, 都应该是 200 */
+                        ? HttpStatus.OK.value()
+                        : e.getCode(),
                 null);
     }
 
+    /**
+     * 业务异常处理. 返回http status固定为200. code表示异常内容
+     *
+     * @param e
+     * @param request
+     * @param response
+     * @return
+     */
     @ExceptionHandler(OperationException.class)
     @ResponseBody
     public ResponseEntity operationExceptionHandler(OperationException e,
-                                                               HttpServletRequest request,
-                                                               HttpServletResponse response) {
+                                                    HttpServletRequest request,
+                                                    HttpServletResponse response) {
         response.reset();
         return standardResponseFactory.produceResponseEntity(false, e.getCode(),
-                e.getMessage(), e.getData(), HttpStatus.OK, null);
+                e.getMessage(), e.getData(), HttpStatus.OK.value(), null);
 
     }
 
-    @ExceptionHandler(MissingRequestValueException.class)
-    @ResponseBody
-    public ResponseEntity missingRequestValueExceptionHandler(MissingRequestValueException e,
-                                                                          HttpServletRequest request, HttpServletResponse response) {
-        logger.warn("[MissingRequestValueExceptionHandler]", e);
-        // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
-        int status = response.getStatus();
-        response.reset();
-
-        return standardResponseFactory.produceResponseEntity(false, status,
-                e.getMessage(), null, HttpStatus.resolve(status), null);
-    }
+//    @ExceptionHandler(ServletException.class)
+//    @ResponseBody
+//    public ResponseEntity servletExceptionHandler(ServletException e,
+//                                                  HttpServletRequest request, HttpServletResponse response) {
+//        logger.warn("[ServletExceptionHandler]", e);
+//        // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
+//        response.reset();
+//
+//        return standardResponseFactory.produceResponseEntity(false, ContextException.Default.getCode(),
+//                e.getMessage(), null,
+//                btResponseProperties.isLooseMode()
+//                        ? HttpStatus.OK.value()
+//                        : ContextException.Default.getCode(),
+//                null);
+//    }
 
     // 很多异常涉及HTTP返回, 暂时不再处理它
 //    @ExceptionHandler(Throwable.class)

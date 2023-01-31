@@ -1,7 +1,7 @@
 /**
 * 一般是有特定的参数不被支持, 比如支付下单接口的第三方支付方式异常. 可根据上下文判断是什么不被支持.
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

@@ -1,7 +1,7 @@
 /**
 * 表示请求的内容已过期(一般是指时间过晚)的异常 (非HTTP定义)
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

@@ -24,7 +24,7 @@ public class BtResponseFactory implements StandardResponseFactory<BtResponse> {
     }
 
     @Override
-    public ResponseEntity<BtResponse> produceResponseEntity(boolean success, int code, String message, Object data, HttpStatus httpStatus, @Nullable MultiValueMap<String, String> headers) {
+    public ResponseEntity<BtResponse> produceResponseEntity(boolean success, int code, String message, Object data, int httpStatus, @Nullable MultiValueMap<String, String> headers) {
         return new ResponseEntity<>(produceResponse(success, code, message, data), headers, httpStatus);
     }
 }

@@ -361,4 +361,28 @@ class IndexControllerTest {
         int status = response.getStatus();
         Assert.assertEquals("not 506", 506, status);
     }
+
+    @Test
+    public void testE461Exception() throws Exception {
+        final String uri = "/index/v1/e/s/461";
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =
+                MockMvcRequestBuilders.get(uri);
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder);
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assert.assertEquals("not 461", 461, status);
+    }
+
+    @Test
+    public void testE561Exception() throws Exception {
+        final String uri = "/index/v1/e/s/561";
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =
+                MockMvcRequestBuilders.get(uri);
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder);
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assert.assertEquals("not 561", 561, status);
+    }
 }

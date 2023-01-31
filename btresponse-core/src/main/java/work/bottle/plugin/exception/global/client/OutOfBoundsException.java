@@ -1,7 +1,7 @@
 /**
 * 请求上下文超出可容纳的范围的情况.
 **/
-package work.bottle.plugin.exception.global.base;
+package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
 

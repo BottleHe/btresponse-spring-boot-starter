@@ -193,7 +193,7 @@ func run(cmd *cobra.Command, args []string) {
 		return
 	}
 	for _, sheet := range xlFile.Sheets {
-		if sheet.Name == "Operation" {
+		if sheet.Name == "Global" {
 			color.Blue(">>> total data %d rows", sheet.MaxRow)
 			for i := 1; i < sheet.MaxRow; i++ {
 				//row, err := sheet.Row(i)
