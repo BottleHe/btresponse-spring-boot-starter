@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import work.bottle.demo.model.SimpleList;
 import work.bottle.demo.service.ErrorService;
+import work.bottle.plugin.exception.global.GlobalError;
 import work.bottle.plugin.exception.global.client.OutOfBoundsException;
 import work.bottle.plugin.exception.global.client.UniquenessException;
 import work.bottle.plugin.exception.global.server.InsufficientException;
@@ -23,5 +24,15 @@ public class ErrorController {
     @GetMapping("/t1")
     public SimpleList<String> test01(@RequestParam("n") int n) throws UniquenessException, OutOfBoundsException, InsufficientException {
         return errorService.test(n);
+    }
+
+    @GetMapping("/version")
+    public int globalErrorVersion() {
+        return GlobalError.getInstance().getVersion();
+    }
+
+    @GetMapping("/info")
+    public GlobalError globalError() {
+        return GlobalError.getInstance();
     }
 }
