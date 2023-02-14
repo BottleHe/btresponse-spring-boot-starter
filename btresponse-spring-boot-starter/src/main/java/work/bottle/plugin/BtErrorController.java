@@ -25,6 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
+/**
+ * 预定义的ErrorController, 解决ExceptionHandler捕获不到的异常. 并做统一处理.
+ */
 @Controller
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 @RequestMapping("${server.error.path:${error.path:/error}}")

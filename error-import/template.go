@@ -14,6 +14,10 @@ public final class {{ .Name }}Exception extends GlobalException {
 
     public static final {{ .Name }}Exception Default = new {{ .Name }}Exception();
 
+	public {{ .Name }}Exception(String message) {
+        super({{ .Code }}, message);
+    }
+
     public {{ .Name }}Exception() {
         super({{ .Code }}, "{{ .Message }}");
     }

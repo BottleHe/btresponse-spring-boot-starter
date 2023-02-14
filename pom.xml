@@ -14,6 +14,8 @@
         <version>2.7.1</version>
     </parent>
     <modules>
+        <module>btresponse-core</module>
+        <module>btresponse-spring-boot-starter</module>
         <module>test-project</module>
     </modules>
     <properties>

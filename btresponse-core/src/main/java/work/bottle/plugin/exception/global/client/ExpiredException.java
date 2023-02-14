@@ -9,6 +9,10 @@ public final class ExpiredException extends GlobalException {
 
     public static final ExpiredException Default = new ExpiredException();
 
+	public ExpiredException(String message) {
+        super(460, message);
+    }
+
     public ExpiredException() {
         super(460, "已过期异常");
     }

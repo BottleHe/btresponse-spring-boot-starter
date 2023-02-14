@@ -9,6 +9,10 @@ public final class TimeoutException extends GlobalException {
 
     public static final TimeoutException Default = new TimeoutException();
 
+	public TimeoutException(String message) {
+        super(408, message);
+    }
+
     public TimeoutException() {
         super(408, "处理超时");
     }

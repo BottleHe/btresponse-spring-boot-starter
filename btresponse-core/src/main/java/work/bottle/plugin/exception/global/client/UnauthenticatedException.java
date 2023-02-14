@@ -9,6 +9,10 @@ public final class UnauthenticatedException extends GlobalException {
 
     public static final UnauthenticatedException Default = new UnauthenticatedException();
 
+	public UnauthenticatedException(String message) {
+        super(401, message);
+    }
+
     public UnauthenticatedException() {
         super(401, "身份未认证异常, 请登录后重试");
     }

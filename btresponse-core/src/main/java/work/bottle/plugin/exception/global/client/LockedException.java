@@ -9,6 +9,10 @@ public final class LockedException extends GlobalException {
 
     public static final LockedException Default = new LockedException();
 
+	public LockedException(String message) {
+        super(423, message);
+    }
+
     public LockedException() {
         super(423, "已锁定异常");
     }

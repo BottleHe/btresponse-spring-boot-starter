@@ -9,6 +9,10 @@ public final class InsufficientException extends GlobalException {
 
     public static final InsufficientException Default = new InsufficientException();
 
+	public InsufficientException(String message) {
+        super(561, message);
+    }
+
     public InsufficientException() {
         super(561, "缺少可用资源");
     }

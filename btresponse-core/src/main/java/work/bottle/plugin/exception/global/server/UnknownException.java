@@ -9,6 +9,10 @@ public final class UnknownException extends GlobalException {
 
     public static final UnknownException Default = new UnknownException();
 
+	public UnknownException(String message) {
+        super(500, message);
+    }
+
     public UnknownException() {
         super(500, "服务处理失败");
     }

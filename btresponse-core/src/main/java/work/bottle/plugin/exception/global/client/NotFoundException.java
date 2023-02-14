@@ -9,6 +9,10 @@ public final class NotFoundException extends GlobalException {
 
     public static final NotFoundException Default = new NotFoundException();
 
+	public NotFoundException(String message) {
+        super(404, message);
+    }
+
     public NotFoundException() {
         super(404, "访问内容不存在");
     }

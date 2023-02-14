@@ -9,6 +9,10 @@ public final class UnprocessableException extends GlobalException {
 
     public static final UnprocessableException Default = new UnprocessableException();
 
+	public UnprocessableException(String message) {
+        super(422, message);
+    }
+
     public UnprocessableException() {
         super(422, "处理失败, 不能处理.");
     }

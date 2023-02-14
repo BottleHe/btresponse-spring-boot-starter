@@ -9,6 +9,10 @@ public final class PrematureException extends GlobalException {
 
     public static final PrematureException Default = new PrematureException();
 
+	public PrematureException(String message) {
+        super(425, message);
+    }
+
     public PrematureException() {
         super(425, "过早的异常");
     }

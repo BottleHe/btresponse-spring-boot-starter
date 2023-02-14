@@ -9,6 +9,10 @@ public final class UnsupportedException extends GlobalException {
 
     public static final UnsupportedException Default = new UnsupportedException();
 
+	public UnsupportedException(String message) {
+        super(415, message);
+    }
+
     public UnsupportedException() {
         super(415, "不支持的请求内容");
     }

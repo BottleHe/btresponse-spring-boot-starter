@@ -9,6 +9,10 @@ public final class UnknownIdentityException extends GlobalException {
 
     public static final UnknownIdentityException Default = new UnknownIdentityException();
 
+	public UnknownIdentityException(String message) {
+        super(461, message);
+    }
+
     public UnknownIdentityException() {
         super(461, "身份未知");
     }

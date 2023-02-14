@@ -9,6 +9,10 @@ public final class TooLargeException extends GlobalException {
 
     public static final TooLargeException Default = new TooLargeException();
 
+	public TooLargeException(String message) {
+        super(413, message);
+    }
+
     public TooLargeException() {
         super(413, "请求过大");
     }

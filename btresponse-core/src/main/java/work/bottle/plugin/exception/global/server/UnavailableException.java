@@ -9,6 +9,10 @@ public final class UnavailableException extends GlobalException {
 
     public static final UnavailableException Default = new UnavailableException();
 
+	public UnavailableException(String message) {
+        super(503, message);
+    }
+
     public UnavailableException() {
         super(503, "服务不可用，过载保护");
     }

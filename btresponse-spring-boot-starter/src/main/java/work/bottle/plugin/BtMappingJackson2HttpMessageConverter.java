@@ -8,6 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
+/**
+ * 自定义类型转换器, 在强制模式下将其优先级提升到最高.
+ */
 public class BtMappingJackson2HttpMessageConverter extends MappingJackson2HttpMessageConverter {
 
     private static final Logger logger = LoggerFactory.getLogger(BtMappingJackson2HttpMessageConverter.class);

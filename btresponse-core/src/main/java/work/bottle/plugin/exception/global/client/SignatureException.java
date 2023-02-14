@@ -9,6 +9,10 @@ public final class SignatureException extends GlobalException {
 
     public static final SignatureException Default = new SignatureException();
 
+	public SignatureException(String message) {
+        super(464, message);
+    }
+
     public SignatureException() {
         super(464, "签名异常");
     }

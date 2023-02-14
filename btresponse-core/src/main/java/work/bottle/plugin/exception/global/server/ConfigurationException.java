@@ -9,6 +9,10 @@ public final class ConfigurationException extends GlobalException {
 
     public static final ConfigurationException Default = new ConfigurationException();
 
+	public ConfigurationException(String message) {
+        super(506, message);
+    }
+
     public ConfigurationException() {
         super(506, "服务器配置错误");
     }

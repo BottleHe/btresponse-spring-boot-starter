@@ -9,6 +9,10 @@ public final class ConflictException extends GlobalException {
 
     public static final ConflictException Default = new ConflictException();
 
+	public ConflictException(String message) {
+        super(409, message);
+    }
+
     public ConflictException() {
         super(409, "状态冲突");
     }

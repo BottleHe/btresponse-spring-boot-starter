@@ -9,6 +9,10 @@ public final class OutOfBoundsException extends GlobalException {
 
     public static final OutOfBoundsException Default = new OutOfBoundsException();
 
+	public OutOfBoundsException(String message) {
+        super(416, message);
+    }
+
     public OutOfBoundsException() {
         super(416, "请求越界");
     }

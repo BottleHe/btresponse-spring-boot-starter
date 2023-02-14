@@ -9,6 +9,10 @@ public final class AuthorizationException extends GlobalException {
 
     public static final AuthorizationException Default = new AuthorizationException();
 
+	public AuthorizationException(String message) {
+        super(563, message);
+    }
+
     public AuthorizationException() {
         super(563, "授权异常");
     }

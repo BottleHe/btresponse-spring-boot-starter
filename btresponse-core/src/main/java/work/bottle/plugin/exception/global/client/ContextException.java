@@ -9,6 +9,10 @@ public final class ContextException extends GlobalException {
 
     public static final ContextException Default = new ContextException();
 
+	public ContextException(String message) {
+        super(400, message);
+    }
+
     public ContextException() {
         super(400, "上下文错误");
     }

@@ -9,6 +9,10 @@ public final class UniquenessException extends GlobalException {
 
     public static final UniquenessException Default = new UniquenessException();
 
+	public UniquenessException(String message) {
+        super(463, message);
+    }
+
     public UniquenessException() {
         super(463, "唯一性异常");
     }

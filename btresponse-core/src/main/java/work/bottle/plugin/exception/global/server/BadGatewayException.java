@@ -9,6 +9,10 @@ public final class BadGatewayException extends GlobalException {
 
     public static final BadGatewayException Default = new BadGatewayException();
 
+	public BadGatewayException(String message) {
+        super(502, message);
+    }
+
     public BadGatewayException() {
         super(502, "服务下线，暂时不可用");
     }

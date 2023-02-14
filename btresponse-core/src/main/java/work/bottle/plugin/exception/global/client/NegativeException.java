@@ -9,6 +9,10 @@ public final class NegativeException extends GlobalException {
 
     public static final NegativeException Default = new NegativeException();
 
+	public NegativeException(String message) {
+        super(418, message);
+    }
+
     public NegativeException() {
         super(418, "服务器拒绝");
     }

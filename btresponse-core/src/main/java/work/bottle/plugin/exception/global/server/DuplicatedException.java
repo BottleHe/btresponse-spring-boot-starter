@@ -9,6 +9,10 @@ public final class DuplicatedException extends GlobalException {
 
     public static final DuplicatedException Default = new DuplicatedException();
 
+	public DuplicatedException(String message) {
+        super(562, message);
+    }
+
     public DuplicatedException() {
         super(562, "重复调用异常");
     }

@@ -9,6 +9,9 @@ import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.ErrorPageRegistrar;
 import org.springframework.boot.web.server.ErrorPageRegistry;
 
+/**
+ * 错误页面路由注入.
+ */
 public class BtErrorPageRegistrar implements ErrorPageRegistrar {
     private static final Logger logger = LoggerFactory.getLogger(BtErrorPageRegistrar.class);
 

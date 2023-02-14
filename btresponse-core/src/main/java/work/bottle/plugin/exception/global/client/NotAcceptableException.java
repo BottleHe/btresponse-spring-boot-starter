@@ -9,6 +9,10 @@ public final class NotAcceptableException extends GlobalException {
 
     public static final NotAcceptableException Default = new NotAcceptableException();
 
+	public NotAcceptableException(String message) {
+        super(406, message);
+    }
+
     public NotAcceptableException() {
         super(406, "不接受的访问");
     }

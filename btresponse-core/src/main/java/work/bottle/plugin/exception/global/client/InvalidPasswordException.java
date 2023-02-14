@@ -9,6 +9,10 @@ public final class InvalidPasswordException extends GlobalException {
 
     public static final InvalidPasswordException Default = new InvalidPasswordException();
 
+	public InvalidPasswordException(String message) {
+        super(462, message);
+    }
+
     public InvalidPasswordException() {
         super(462, "无效的口令");
     }

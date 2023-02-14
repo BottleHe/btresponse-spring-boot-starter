@@ -25,6 +25,9 @@ import work.bottle.plugin.exception.global.client.UnsupportedException;
 
 import java.util.List;
 
+/**
+ * 内部异常处理类, 针对一些特定的异常进行统一处理
+ */
 @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 public class BaseResponseBodyExceptionHandler {
