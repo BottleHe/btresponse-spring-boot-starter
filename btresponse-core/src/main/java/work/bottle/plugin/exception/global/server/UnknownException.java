@@ -4,6 +4,7 @@
 package work.bottle.plugin.exception.global.server;
 
 import work.bottle.plugin.exception.GlobalException;
+import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnknownException extends GlobalException {
 

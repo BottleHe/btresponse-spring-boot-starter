@@ -9,6 +9,7 @@ var (
 package {{ .Package }};
 
 import work.bottle.plugin.exception.GlobalException;
+import {{ .BasePackage }}.GlobalError;
 
 public final class {{ .Name }}Exception extends GlobalException {
 

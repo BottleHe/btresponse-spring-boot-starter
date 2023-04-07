@@ -4,6 +4,7 @@
 package work.bottle.plugin.exception.global.client;
 
 import work.bottle.plugin.exception.GlobalException;
+import work.bottle.plugin.exception.global.GlobalError;
 
 public final class InvalidPasswordException extends GlobalException {
 

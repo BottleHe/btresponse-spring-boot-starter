@@ -34,16 +34,17 @@ var (
 )
 
 type DataStruct struct {
-	Note    string
-	Package string
-	Name    string
-	Message string
-	Code    string
+	Note        string
+	BasePackage string
+	Package     string
+	Name        string
+	Message     string
+	Code        string
 }
 
 type GlobalErrorData struct {
-	Package string
-	Version int
+	Package        string
+	Version        int
 	DataStructList []*DataStruct
 }
 
@@ -290,11 +291,12 @@ func run(cmd *cobra.Command, args []string) {
 					break
 				}
 				dataStruct := DataStruct{
-					Note:    row.Cells[4].Value,
-					Package: fmt.Sprintf("%s.%s", packagePath, row.Cells[0].Value),
-					Name:    toHump(row.Cells[1].Value, true),
-					Code:    row.Cells[2].Value,
-					Message: row.Cells[3].Value,
+					Note:        row.Cells[4].Value,
+					Package:     fmt.Sprintf("%s.%s", packagePath, row.Cells[0].Value),
+					BasePackage: packagePath,
+					Name:        toHump(row.Cells[1].Value, true),
+					Code:        row.Cells[2].Value,
+					Message:     row.Cells[3].Value,
 				}
 				globalErrorData.DataStructList = append(globalErrorData.DataStructList, &dataStruct)
 				// 生成文件数据, 写入
@@ -309,8 +311,6 @@ func run(cmd *cobra.Command, args []string) {
 		writeGlobalErrorFile(_dPath, globalErrorData)
 	}
 }
-
-
 
 func toHump(source string, first bool) string {
 	if "" == source {
