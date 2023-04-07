@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class UnauthenticatedException extends GlobalException {
 
-    public static final UnauthenticatedException Default = new UnauthenticatedException();
+    public static final UnauthenticatedException Default = (UnauthenticatedException) GlobalError.getInstance().buildDefaultByCode(401);
 
 	public UnauthenticatedException(String message) {
         super(401, message);
@@ -15,5 +15,13 @@ public final class UnauthenticatedException extends GlobalException {
 
     public UnauthenticatedException() {
         super(401, "身份未认证异常, 请登录后重试");
+    }
+
+    public UnauthenticatedException(String message, Object data) {
+        super(401, message, data);
+    }
+
+    public UnauthenticatedException(String message, Object data, Throwable t) {
+        super(401, message, data, t);
     }
 }

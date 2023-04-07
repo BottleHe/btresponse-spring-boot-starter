@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class UnknownIdentityException extends GlobalException {
 
-    public static final UnknownIdentityException Default = new UnknownIdentityException();
+    public static final UnknownIdentityException Default = (UnknownIdentityException) GlobalError.getInstance().buildDefaultByCode(461);
 
 	public UnknownIdentityException(String message) {
         super(461, message);
@@ -15,5 +15,13 @@ public final class UnknownIdentityException extends GlobalException {
 
     public UnknownIdentityException() {
         super(461, "身份未知");
+    }
+
+    public UnknownIdentityException(String message, Object data) {
+        super(461, message, data);
+    }
+
+    public UnknownIdentityException(String message, Object data, Throwable t) {
+        super(461, message, data, t);
     }
 }

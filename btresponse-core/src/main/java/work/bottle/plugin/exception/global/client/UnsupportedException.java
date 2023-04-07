@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class UnsupportedException extends GlobalException {
 
-    public static final UnsupportedException Default = new UnsupportedException();
+    public static final UnsupportedException Default = (UnsupportedException) GlobalError.getInstance().buildDefaultByCode(415);
 
 	public UnsupportedException(String message) {
         super(415, message);
@@ -15,5 +15,13 @@ public final class UnsupportedException extends GlobalException {
 
     public UnsupportedException() {
         super(415, "不支持的请求内容");
+    }
+
+    public UnsupportedException(String message, Object data) {
+        super(415, message, data);
+    }
+
+    public UnsupportedException(String message, Object data, Throwable t) {
+        super(415, message, data, t);
     }
 }

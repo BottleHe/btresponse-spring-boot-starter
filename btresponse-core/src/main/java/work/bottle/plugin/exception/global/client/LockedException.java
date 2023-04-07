@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class LockedException extends GlobalException {
 
-    public static final LockedException Default = new LockedException();
+    public static final LockedException Default = (LockedException) GlobalError.getInstance().buildDefaultByCode(423);
 
 	public LockedException(String message) {
         super(423, message);
@@ -15,5 +15,13 @@ public final class LockedException extends GlobalException {
 
     public LockedException() {
         super(423, "已锁定异常");
+    }
+
+    public LockedException(String message, Object data) {
+        super(423, message, data);
+    }
+
+    public LockedException(String message, Object data, Throwable t) {
+        super(423, message, data, t);
     }
 }

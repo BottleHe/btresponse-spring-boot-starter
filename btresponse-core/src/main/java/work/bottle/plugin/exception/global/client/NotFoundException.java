@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class NotFoundException extends GlobalException {
 
-    public static final NotFoundException Default = new NotFoundException();
+    public static final NotFoundException Default = (NotFoundException) GlobalError.getInstance().buildDefaultByCode(404);
 
 	public NotFoundException(String message) {
         super(404, message);
@@ -15,5 +15,13 @@ public final class NotFoundException extends GlobalException {
 
     public NotFoundException() {
         super(404, "访问内容不存在");
+    }
+
+    public NotFoundException(String message, Object data) {
+        super(404, message, data);
+    }
+
+    public NotFoundException(String message, Object data, Throwable t) {
+        super(404, message, data, t);
     }
 }

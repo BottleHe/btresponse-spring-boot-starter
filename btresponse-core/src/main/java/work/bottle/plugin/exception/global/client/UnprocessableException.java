@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class UnprocessableException extends GlobalException {
 
-    public static final UnprocessableException Default = new UnprocessableException();
+    public static final UnprocessableException Default = (UnprocessableException) GlobalError.getInstance().buildDefaultByCode(422);
 
 	public UnprocessableException(String message) {
         super(422, message);
@@ -15,5 +15,13 @@ public final class UnprocessableException extends GlobalException {
 
     public UnprocessableException() {
         super(422, "处理失败, 不能处理.");
+    }
+
+    public UnprocessableException(String message, Object data) {
+        super(422, message, data);
+    }
+
+    public UnprocessableException(String message, Object data, Throwable t) {
+        super(422, message, data, t);
     }
 }

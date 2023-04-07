@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class UnknownException extends GlobalException {
 
-    public static final UnknownException Default = new UnknownException();
+    public static final UnknownException Default = (UnknownException) GlobalError.getInstance().buildDefaultByCode(500);
 
 	public UnknownException(String message) {
         super(500, message);
@@ -15,5 +15,13 @@ public final class UnknownException extends GlobalException {
 
     public UnknownException() {
         super(500, "服务处理失败");
+    }
+
+    public UnknownException(String message, Object data) {
+        super(500, message, data);
+    }
+
+    public UnknownException(String message, Object data, Throwable t) {
+        super(500, message, data, t);
     }
 }

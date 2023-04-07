@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class ExpiredException extends GlobalException {
 
-    public static final ExpiredException Default = new ExpiredException();
+    public static final ExpiredException Default = (ExpiredException) GlobalError.getInstance().buildDefaultByCode(460);
 
 	public ExpiredException(String message) {
         super(460, message);
@@ -15,5 +15,13 @@ public final class ExpiredException extends GlobalException {
 
     public ExpiredException() {
         super(460, "已过期异常");
+    }
+
+    public ExpiredException(String message, Object data) {
+        super(460, message, data);
+    }
+
+    public ExpiredException(String message, Object data, Throwable t) {
+        super(460, message, data, t);
     }
 }

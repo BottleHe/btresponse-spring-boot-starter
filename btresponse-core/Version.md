@@ -11,3 +11,9 @@
 
 ### v1.1.1
 * 添加对GlobalException的派生异常, 自定义message的构造方式.
+
+### v1.1.2
+* 添加一个集中的MAP存储空间, 存储默认的异常
+* 更改默认异常的存储方式, 不再存储在原对象中, 而是存放在GlobalError实例中, 使用Map映射存储.
+* 添加异常的构造函数, 支持定义附加对象和Throwable cause.
+* 给GlobalError添加实例方法, 支持通过code去获取一个默认异常

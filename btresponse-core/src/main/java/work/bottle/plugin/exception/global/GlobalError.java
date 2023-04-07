@@ -1,7 +1,11 @@
 package work.bottle.plugin.exception.global;
 
+import work.bottle.plugin.exception.GlobalException;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GlobalError {
 
@@ -29,6 +33,7 @@ public class GlobalError {
                 if (null == INSTANCE) {
                     INSTANCE = new GlobalError();
                     INSTANCE.populate();
+                    INSTANCE.genDefaults();
                 }
             }
         }
@@ -36,11 +41,11 @@ public class GlobalError {
     }
 
     private int version;
-    private List<ErrorInfo> errorInfoList;
+    private List<ErrorInfo> errorInfoList = new ArrayList<>(28);
+    private final Map<Integer, GlobalException> EXCEPTION_POOL = new HashMap<>(28);
 
     private void populate() {
         this.version = 1;
-        this.errorInfoList = new ArrayList<>();
 		
         errorInfoList.add(new ErrorInfo(400, "上下文错误", "一般是指客户端上下文异常, 无效的上下文, 消息帧, 欺骗性上下文等", "client", "Context"));
         errorInfoList.add(new ErrorInfo(401, "身份未认证异常, 请登录后重试", "一般是需要身份认证的接口, 用户访问时未登录触发. ", "client", "Unauthenticated"));
@@ -72,6 +77,38 @@ public class GlobalError {
         errorInfoList.add(new ErrorInfo(563, "授权异常", "授权异常, 表示授权失败. ", "server", "Authorization"));
     }
 
+	private void genDefaults() {
+		
+		EXCEPTION_POOL.put(400, new work.bottle.plugin.exception.global.client.ContextException());
+		EXCEPTION_POOL.put(401, new work.bottle.plugin.exception.global.client.UnauthenticatedException());
+		EXCEPTION_POOL.put(403, new work.bottle.plugin.exception.global.client.ForbiddenException());
+		EXCEPTION_POOL.put(404, new work.bottle.plugin.exception.global.client.NotFoundException());
+		EXCEPTION_POOL.put(405, new work.bottle.plugin.exception.global.client.NotAllowedException());
+		EXCEPTION_POOL.put(406, new work.bottle.plugin.exception.global.client.NotAcceptableException());
+		EXCEPTION_POOL.put(408, new work.bottle.plugin.exception.global.client.TimeoutException());
+		EXCEPTION_POOL.put(409, new work.bottle.plugin.exception.global.client.ConflictException());
+		EXCEPTION_POOL.put(413, new work.bottle.plugin.exception.global.client.TooLargeException());
+		EXCEPTION_POOL.put(415, new work.bottle.plugin.exception.global.client.UnsupportedException());
+		EXCEPTION_POOL.put(416, new work.bottle.plugin.exception.global.client.OutOfBoundsException());
+		EXCEPTION_POOL.put(418, new work.bottle.plugin.exception.global.client.NegativeException());
+		EXCEPTION_POOL.put(422, new work.bottle.plugin.exception.global.client.UnprocessableException());
+		EXCEPTION_POOL.put(423, new work.bottle.plugin.exception.global.client.LockedException());
+		EXCEPTION_POOL.put(425, new work.bottle.plugin.exception.global.client.PrematureException());
+		EXCEPTION_POOL.put(429, new work.bottle.plugin.exception.global.client.FrequencyException());
+		EXCEPTION_POOL.put(460, new work.bottle.plugin.exception.global.client.ExpiredException());
+		EXCEPTION_POOL.put(461, new work.bottle.plugin.exception.global.client.UnknownIdentityException());
+		EXCEPTION_POOL.put(462, new work.bottle.plugin.exception.global.client.InvalidPasswordException());
+		EXCEPTION_POOL.put(463, new work.bottle.plugin.exception.global.client.UniquenessException());
+		EXCEPTION_POOL.put(464, new work.bottle.plugin.exception.global.client.SignatureException());
+		EXCEPTION_POOL.put(500, new work.bottle.plugin.exception.global.server.UnknownException());
+		EXCEPTION_POOL.put(502, new work.bottle.plugin.exception.global.server.BadGatewayException());
+		EXCEPTION_POOL.put(503, new work.bottle.plugin.exception.global.server.UnavailableException());
+		EXCEPTION_POOL.put(506, new work.bottle.plugin.exception.global.server.ConfigurationException());
+		EXCEPTION_POOL.put(561, new work.bottle.plugin.exception.global.server.InsufficientException());
+		EXCEPTION_POOL.put(562, new work.bottle.plugin.exception.global.server.DuplicatedException());
+		EXCEPTION_POOL.put(563, new work.bottle.plugin.exception.global.server.AuthorizationException());
+    }
+
     public int getVersion() {
         return version;
     }
@@ -83,8 +120,15 @@ public class GlobalError {
     public List<ErrorInfo> getErrorInfoList() {
         return errorInfoList;
     }
+	
+	public Map<Integer, GlobalException> getDefaultExceptionMap() {
+		return EXCEPTION_POOL;
+	}
 
-    public void setErrorInfoList(List<ErrorInfo> errorInfoList) {
-        this.errorInfoList = errorInfoList;
-    }
+	public GlobalException buildDefaultByCode(int code) {
+		if (EXCEPTION_POOL.containsKey(code)) {
+			return EXCEPTION_POOL.get(code);
+		}
+		return EXCEPTION_POOL.get(500);
+	}
 }

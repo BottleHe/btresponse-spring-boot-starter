@@ -4,10 +4,11 @@
 package work.bottle.plugin.exception.global.server;
 
 import work.bottle.plugin.exception.GlobalException;
+import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnavailableException extends GlobalException {
 
-    public static final UnavailableException Default = new UnavailableException();
+    public static final UnavailableException Default = (UnavailableException) GlobalError.getInstance().buildDefaultByCode(503);
 
 	public UnavailableException(String message) {
         super(503, message);
@@ -15,5 +16,13 @@ public final class UnavailableException extends GlobalException {
 
     public UnavailableException() {
         super(503, "服务不可用，过载保护");
+    }
+
+    public UnavailableException(String message, Object data) {
+        super(503, message, data);
+    }
+
+    public UnavailableException(String message, Object data, Throwable t) {
+        super(503, message, data, t);
     }
 }

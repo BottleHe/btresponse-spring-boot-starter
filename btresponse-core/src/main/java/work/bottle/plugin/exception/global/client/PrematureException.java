@@ -7,7 +7,7 @@ import work.bottle.plugin.exception.GlobalException;
 
 public final class PrematureException extends GlobalException {
 
-    public static final PrematureException Default = new PrematureException();
+    public static final PrematureException Default = (PrematureException) GlobalError.getInstance().buildDefaultByCode(425);
 
 	public PrematureException(String message) {
         super(425, message);
@@ -15,5 +15,13 @@ public final class PrematureException extends GlobalException {
 
     public PrematureException() {
         super(425, "过早的异常");
+    }
+
+    public PrematureException(String message, Object data) {
+        super(425, message, data);
+    }
+
+    public PrematureException(String message, Object data, Throwable t) {
+        super(425, message, data, t);
     }
 }

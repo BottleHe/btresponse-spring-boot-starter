@@ -24,6 +24,13 @@ public class GlobalException extends Exception {
         this.data = data;
     }
 
+    public GlobalException(int code, String message, Object data, Throwable t)
+    {
+        super(message, t);
+        this.code = code;
+        this.data = data;
+    }
+
     public int getCode() {
         return code;
     }
