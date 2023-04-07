@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnprocessableException extends GlobalException {
 
-    public static final UnprocessableException Default = (UnprocessableException) GlobalError.getInstance().buildDefaultByCode(422);
+	public static final UnprocessableException Default = new UnprocessableException();
 
 	public UnprocessableException(String message) {
         super(422, message);

@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class AuthorizationException extends GlobalException {
 
-    public static final AuthorizationException Default = (AuthorizationException) GlobalError.getInstance().buildDefaultByCode(563);
+	public static final AuthorizationException Default = new AuthorizationException();
 
 	public AuthorizationException(String message) {
         super(563, message);

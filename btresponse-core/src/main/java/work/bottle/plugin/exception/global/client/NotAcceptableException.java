@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class NotAcceptableException extends GlobalException {
 
-    public static final NotAcceptableException Default = (NotAcceptableException) GlobalError.getInstance().buildDefaultByCode(406);
+	public static final NotAcceptableException Default = new NotAcceptableException();
 
 	public NotAcceptableException(String message) {
         super(406, message);

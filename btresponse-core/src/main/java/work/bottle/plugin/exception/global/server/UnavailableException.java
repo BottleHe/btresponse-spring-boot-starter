@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnavailableException extends GlobalException {
 
-    public static final UnavailableException Default = (UnavailableException) GlobalError.getInstance().buildDefaultByCode(503);
+	public static final UnavailableException Default = new UnavailableException();
 
 	public UnavailableException(String message) {
         super(503, message);

@@ -13,7 +13,7 @@ import {{ .BasePackage }}.GlobalError;
 
 public final class {{ .Name }}Exception extends GlobalException {
 
-    public static final {{ .Name }}Exception Default = ({{ .Name }}Exception) GlobalError.getInstance().buildDefaultByCode({{ .Code }});
+	public static final {{ .Name }}Exception Default = new {{ .Name }}Exception();
 
 	public {{ .Name }}Exception(String message) {
         super({{ .Code }}, message);
@@ -41,7 +41,7 @@ import java.util.Map;
 
 public class GlobalError {
 
-    private static class ErrorInfo {
+    public static class ErrorInfo {
         public int code;
         public String message;
         public String description;
@@ -57,55 +57,40 @@ public class GlobalError {
         }
     }
 
-    private static volatile GlobalError INSTANCE;
+	private static final int version = {{ .Version }};
+    private static final List<ErrorInfo> errorInfoList = new ArrayList<>({{ len .DataStructList }});
+    private static final Map<Integer, Class<? extends GlobalException>> EXCEPTION_POOL = new HashMap<>({{ len .DataStructList }});
 
-    public static GlobalError getInstance() {
-        if (null == INSTANCE) {
-            synchronized (GlobalError.class) {
-                if (null == INSTANCE) {
-                    INSTANCE = new GlobalError();
-                    INSTANCE.populate();
-                    INSTANCE.genDefaults();
-                }
-            }
-        }
-        return INSTANCE;
-    }
+	static {
+		populate();
+		genDefaults();
+	}
 
-    private int version;
-    private List<ErrorInfo> errorInfoList = new ArrayList<>({{ len .DataStructList }});
-    private final Map<Integer, GlobalException> EXCEPTION_POOL = new HashMap<>({{ len .DataStructList }});
-
-    private void populate() {
-        this.version = {{ .Version }};
+    private static void populate() {
 		{{ range $error := .DataStructList }}
         errorInfoList.add(new ErrorInfo({{ $error.Code }}, "{{ $error.Message }}", "{{ $error.Note }}", "{{ GetSuffix $error.Package }}", "{{ $error.Name }}"));
 		{{- end }}
     }
 
-	private void genDefaults() {
+	private static void genDefaults() {
 		{{ range $error := .DataStructList }}
-		EXCEPTION_POOL.put({{ $error.Code }}, new {{ $error.Package }}.{{ $error.Name }}Exception());
+		EXCEPTION_POOL.put({{ $error.Code }}, {{ $error.Package }}.{{ $error.Name }}Exception.class);
 		{{- end }}
     }
 
-    public int getVersion() {
+    public static int getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public List<ErrorInfo> getErrorInfoList() {
+    public static List<ErrorInfo> getErrorInfoList() {
         return errorInfoList;
     }
 	
-	public Map<Integer, GlobalException> getDefaultExceptionMap() {
+	public static Map<Integer, Class<? extends GlobalException>> getDefaultExceptionMap() {
 		return EXCEPTION_POOL;
 	}
 
-	public GlobalException buildDefaultByCode(int code) {
+	public static Class<? extends GlobalException> getExceptionClass(int code) {
 		if (EXCEPTION_POOL.containsKey(code)) {
 			return EXCEPTION_POOL.get(code);
 		}

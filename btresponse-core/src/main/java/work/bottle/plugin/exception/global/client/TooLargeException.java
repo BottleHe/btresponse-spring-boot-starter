@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class TooLargeException extends GlobalException {
 
-    public static final TooLargeException Default = (TooLargeException) GlobalError.getInstance().buildDefaultByCode(413);
+	public static final TooLargeException Default = new TooLargeException();
 
 	public TooLargeException(String message) {
         super(413, message);

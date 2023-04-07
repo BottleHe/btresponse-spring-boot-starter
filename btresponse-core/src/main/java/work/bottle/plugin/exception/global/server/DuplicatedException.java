@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class DuplicatedException extends GlobalException {
 
-    public static final DuplicatedException Default = (DuplicatedException) GlobalError.getInstance().buildDefaultByCode(562);
+	public static final DuplicatedException Default = new DuplicatedException();
 
 	public DuplicatedException(String message) {
         super(562, message);

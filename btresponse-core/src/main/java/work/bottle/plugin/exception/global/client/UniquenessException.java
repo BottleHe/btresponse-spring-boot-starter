@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UniquenessException extends GlobalException {
 
-    public static final UniquenessException Default = (UniquenessException) GlobalError.getInstance().buildDefaultByCode(463);
+	public static final UniquenessException Default = new UniquenessException();
 
 	public UniquenessException(String message) {
         super(463, message);

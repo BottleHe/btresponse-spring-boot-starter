@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnauthenticatedException extends GlobalException {
 
-    public static final UnauthenticatedException Default = (UnauthenticatedException) GlobalError.getInstance().buildDefaultByCode(401);
+	public static final UnauthenticatedException Default = new UnauthenticatedException();
 
 	public UnauthenticatedException(String message) {
         super(401, message);

@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class SignatureException extends GlobalException {
 
-    public static final SignatureException Default = (SignatureException) GlobalError.getInstance().buildDefaultByCode(464);
+	public static final SignatureException Default = new SignatureException();
 
 	public SignatureException(String message) {
         super(464, message);

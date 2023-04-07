@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class NegativeException extends GlobalException {
 
-    public static final NegativeException Default = (NegativeException) GlobalError.getInstance().buildDefaultByCode(418);
+	public static final NegativeException Default = new NegativeException();
 
 	public NegativeException(String message) {
         super(418, message);

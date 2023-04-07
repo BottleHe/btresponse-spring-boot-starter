@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class InvalidPasswordException extends GlobalException {
 
-    public static final InvalidPasswordException Default = (InvalidPasswordException) GlobalError.getInstance().buildDefaultByCode(462);
+	public static final InvalidPasswordException Default = new InvalidPasswordException();
 
 	public InvalidPasswordException(String message) {
         super(462, message);

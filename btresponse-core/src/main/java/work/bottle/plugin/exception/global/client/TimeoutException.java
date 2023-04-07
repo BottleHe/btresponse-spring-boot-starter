@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class TimeoutException extends GlobalException {
 
-    public static final TimeoutException Default = (TimeoutException) GlobalError.getInstance().buildDefaultByCode(408);
+	public static final TimeoutException Default = new TimeoutException();
 
 	public TimeoutException(String message) {
         super(408, message);

@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class NotFoundException extends GlobalException {
 
-    public static final NotFoundException Default = (NotFoundException) GlobalError.getInstance().buildDefaultByCode(404);
+	public static final NotFoundException Default = new NotFoundException();
 
 	public NotFoundException(String message) {
         super(404, message);

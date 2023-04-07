@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnsupportedException extends GlobalException {
 
-    public static final UnsupportedException Default = (UnsupportedException) GlobalError.getInstance().buildDefaultByCode(415);
+	public static final UnsupportedException Default = new UnsupportedException();
 
 	public UnsupportedException(String message) {
         super(415, message);

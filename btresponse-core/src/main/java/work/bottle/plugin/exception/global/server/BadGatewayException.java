@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class BadGatewayException extends GlobalException {
 
-    public static final BadGatewayException Default = (BadGatewayException) GlobalError.getInstance().buildDefaultByCode(502);
+	public static final BadGatewayException Default = new BadGatewayException();
 
 	public BadGatewayException(String message) {
         super(502, message);

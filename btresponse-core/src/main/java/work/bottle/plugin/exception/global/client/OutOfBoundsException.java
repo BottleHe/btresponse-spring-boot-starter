@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class OutOfBoundsException extends GlobalException {
 
-    public static final OutOfBoundsException Default = (OutOfBoundsException) GlobalError.getInstance().buildDefaultByCode(416);
+	public static final OutOfBoundsException Default = new OutOfBoundsException();
 
 	public OutOfBoundsException(String message) {
         super(416, message);

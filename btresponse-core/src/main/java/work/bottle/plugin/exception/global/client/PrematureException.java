@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class PrematureException extends GlobalException {
 
-    public static final PrematureException Default = (PrematureException) GlobalError.getInstance().buildDefaultByCode(425);
+	public static final PrematureException Default = new PrematureException();
 
 	public PrematureException(String message) {
         super(425, message);

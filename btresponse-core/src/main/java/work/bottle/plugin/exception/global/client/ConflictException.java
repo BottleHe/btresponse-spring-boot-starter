@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class ConflictException extends GlobalException {
 
-    public static final ConflictException Default = (ConflictException) GlobalError.getInstance().buildDefaultByCode(409);
+	public static final ConflictException Default = new ConflictException();
 
 	public ConflictException(String message) {
         super(409, message);

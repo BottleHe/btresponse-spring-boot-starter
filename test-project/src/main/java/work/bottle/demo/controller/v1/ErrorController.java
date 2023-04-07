@@ -1,15 +1,16 @@
 package work.bottle.demo.controller.v1;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import work.bottle.demo.model.SimpleList;
 import work.bottle.demo.service.ErrorService;
+import work.bottle.plugin.annotation.Ignore;
+import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.global.GlobalError;
 import work.bottle.plugin.exception.global.client.OutOfBoundsException;
 import work.bottle.plugin.exception.global.client.UniquenessException;
 import work.bottle.plugin.exception.global.server.InsufficientException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/error/v1")
@@ -28,11 +29,36 @@ public class ErrorController {
 
     @GetMapping("/version")
     public int globalErrorVersion() {
-        return GlobalError.getInstance().getVersion();
+        return GlobalError.getVersion();
     }
 
-    @GetMapping("/info")
-    public GlobalError globalError() {
-        return GlobalError.getInstance();
+    @RequestMapping("/info")
+    public List<GlobalError.ErrorInfo> globalError() {
+        return GlobalError.getErrorInfoList();
+    }
+
+    @RequestMapping(value = "/e561", method = {RequestMethod.GET, RequestMethod.HEAD, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
+    public int e561() throws GlobalException {
+        try {
+            throw GlobalError.getExceptionClass(561).newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Ignore
+    @RequestMapping(value = "/e561/ignore", method = {RequestMethod.GET, RequestMethod.HEAD, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
+    public int e561Ignore() throws GlobalException {
+        try {
+            throw GlobalError.getExceptionClass(561).newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

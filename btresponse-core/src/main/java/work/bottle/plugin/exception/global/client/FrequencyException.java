@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class FrequencyException extends GlobalException {
 
-    public static final FrequencyException Default = (FrequencyException) GlobalError.getInstance().buildDefaultByCode(429);
+	public static final FrequencyException Default = new FrequencyException();
 
 	public FrequencyException(String message) {
         super(429, message);

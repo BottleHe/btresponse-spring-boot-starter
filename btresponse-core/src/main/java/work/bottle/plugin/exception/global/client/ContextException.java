@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class ContextException extends GlobalException {
 
-    public static final ContextException Default = (ContextException) GlobalError.getInstance().buildDefaultByCode(400);
+	public static final ContextException Default = new ContextException();
 
 	public ContextException(String message) {
         super(400, message);

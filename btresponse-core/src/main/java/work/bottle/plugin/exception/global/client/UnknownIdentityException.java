@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class UnknownIdentityException extends GlobalException {
 
-    public static final UnknownIdentityException Default = (UnknownIdentityException) GlobalError.getInstance().buildDefaultByCode(461);
+	public static final UnknownIdentityException Default = new UnknownIdentityException();
 
 	public UnknownIdentityException(String message) {
         super(461, message);

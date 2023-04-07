@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class ConfigurationException extends GlobalException {
 
-    public static final ConfigurationException Default = (ConfigurationException) GlobalError.getInstance().buildDefaultByCode(506);
+	public static final ConfigurationException Default = new ConfigurationException();
 
 	public ConfigurationException(String message) {
         super(506, message);

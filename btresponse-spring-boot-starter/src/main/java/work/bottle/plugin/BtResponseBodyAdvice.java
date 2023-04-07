@@ -11,10 +11,13 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @ControllerAdvice
@@ -23,9 +26,11 @@ public class BtResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     private static final Logger logger = LoggerFactory.getLogger(BtResponseBodyAdvice.class);
 
     private final StandardResponseFactory standardResponseFactory;
+    private final HttpServletRequest httpServletRequest;
 
-    public BtResponseBodyAdvice(StandardResponseFactory standardResponseFactory) {
+    public BtResponseBodyAdvice(StandardResponseFactory standardResponseFactory, HttpServletRequest httpServletRequest) {
         this.standardResponseFactory = standardResponseFactory;
+        this.httpServletRequest = httpServletRequest;
     }
 
     @Override

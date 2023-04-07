@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class LockedException extends GlobalException {
 
-    public static final LockedException Default = (LockedException) GlobalError.getInstance().buildDefaultByCode(423);
+	public static final LockedException Default = new LockedException();
 
 	public LockedException(String message) {
         super(423, message);

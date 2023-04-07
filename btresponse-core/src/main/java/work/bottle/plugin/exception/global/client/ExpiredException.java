@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class ExpiredException extends GlobalException {
 
-    public static final ExpiredException Default = (ExpiredException) GlobalError.getInstance().buildDefaultByCode(460);
+	public static final ExpiredException Default = new ExpiredException();
 
 	public ExpiredException(String message) {
         super(460, message);

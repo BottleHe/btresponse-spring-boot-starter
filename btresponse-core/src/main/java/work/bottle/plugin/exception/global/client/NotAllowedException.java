@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class NotAllowedException extends GlobalException {
 
-    public static final NotAllowedException Default = (NotAllowedException) GlobalError.getInstance().buildDefaultByCode(405);
+	public static final NotAllowedException Default = new NotAllowedException();
 
 	public NotAllowedException(String message) {
         super(405, message);

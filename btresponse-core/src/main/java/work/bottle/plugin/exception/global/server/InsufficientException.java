@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class InsufficientException extends GlobalException {
 
-    public static final InsufficientException Default = (InsufficientException) GlobalError.getInstance().buildDefaultByCode(561);
+	public static final InsufficientException Default = new InsufficientException();
 
 	public InsufficientException(String message) {
         super(561, message);

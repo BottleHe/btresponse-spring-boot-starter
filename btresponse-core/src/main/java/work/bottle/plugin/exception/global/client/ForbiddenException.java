@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.global.GlobalError;
 
 public final class ForbiddenException extends GlobalException {
 
-    public static final ForbiddenException Default = (ForbiddenException) GlobalError.getInstance().buildDefaultByCode(403);
+	public static final ForbiddenException Default = new ForbiddenException();
 
 	public ForbiddenException(String message) {
         super(403, message);
