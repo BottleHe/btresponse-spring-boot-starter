@@ -1,5 +1,6 @@
 package work.bottle.plugin;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -17,7 +18,6 @@ import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
 
-import javax.servlet.http.HttpServletRequest;
 
 
 @ControllerAdvice

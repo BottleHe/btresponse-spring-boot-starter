@@ -8,7 +8,6 @@ import work.bottle.demo.model.Query;
 
 import java.util.List;
 
-@Repository("HotelInfoMapper")
 @Mapper
 public interface HotelInfoMapper {
     public int insertMultiHotelData(@Param("hotelInfoList") List<HotelInfo> hotelInfoList);

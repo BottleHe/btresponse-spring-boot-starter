@@ -8,7 +8,7 @@ import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
 
 public interface StandardResponseFactory<T> {
-    static final String EMPTY_STR = "";
+    String EMPTY_STR = "";
 
     boolean isInstance(Object o);
 

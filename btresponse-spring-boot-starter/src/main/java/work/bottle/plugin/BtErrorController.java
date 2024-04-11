@@ -1,5 +1,8 @@
 package work.bottle.plugin;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -20,9 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import work.bottle.plugin.exception.OperationException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**
@@ -44,7 +44,10 @@ public class BtErrorController extends AbstractErrorController {
      * @param errorProperties configuration properties
      * @param btResponseProperties btResponseProperties
      */
-    public BtErrorController(StandardResponseFactory standardResponseFactory, ErrorAttributes errorAttributes, ErrorProperties errorProperties, BtResponseProperties btResponseProperties) {
+    public BtErrorController(StandardResponseFactory standardResponseFactory,
+                             ErrorAttributes errorAttributes,
+                             ErrorProperties errorProperties,
+                             BtResponseProperties btResponseProperties) {
         this(standardResponseFactory, errorAttributes, errorProperties, btResponseProperties, Collections.emptyList());
     }
 

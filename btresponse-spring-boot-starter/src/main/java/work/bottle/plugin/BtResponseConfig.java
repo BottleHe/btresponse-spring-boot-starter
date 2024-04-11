@@ -1,5 +1,6 @@
 package work.bottle.plugin;
 
+import jakarta.servlet.Servlet;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.*;
@@ -17,7 +18,6 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.Servlet;
 import java.util.stream.Collectors;
 
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)

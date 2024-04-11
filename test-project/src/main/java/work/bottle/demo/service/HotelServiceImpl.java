@@ -1,6 +1,5 @@
 package work.bottle.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import work.bottle.demo.domain.HotelInfo;
 import work.bottle.demo.mapper.HotelInfoMapper;
@@ -11,8 +10,11 @@ import java.util.List;
 @Service
 public class HotelServiceImpl implements HotelService{
 
-    @Autowired
-    private HotelInfoMapper hotelInfoMapper;
+    private final HotelInfoMapper hotelInfoMapper;
+
+    public HotelServiceImpl(HotelInfoMapper hotelInfoMapper) {
+        this.hotelInfoMapper = hotelInfoMapper;
+    }
 
     @Override
     public int insertMultiHotelData(List<HotelInfo> list) {

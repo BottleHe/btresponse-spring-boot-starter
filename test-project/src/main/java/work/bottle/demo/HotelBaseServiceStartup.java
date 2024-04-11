@@ -37,7 +37,7 @@ public class HotelBaseServiceStartup {
             requestMappingHandlerMapping.getHandlerMethods().forEach(new BiConsumer<RequestMappingInfo, HandlerMethod>() {
                 @Override
                 public void accept(RequestMappingInfo requestMappingInfo, HandlerMethod handlerMethod) {
-                    System.out.println("  - " + requestMappingInfo.getMethodsCondition().getMethods() + ":" + requestMappingInfo.getPatternsCondition() + ", HandlerMethod: " + handlerMethod);
+                    System.out.println("  - " + requestMappingInfo.getMethodsCondition().getMethods() + ":" + requestMappingInfo.getPathPatternsCondition() + ", HandlerMethod: " + handlerMethod);
                 }
             });
         } catch (Exception e) {

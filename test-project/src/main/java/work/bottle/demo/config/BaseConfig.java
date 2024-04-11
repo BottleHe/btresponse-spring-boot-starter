@@ -1,5 +1,7 @@
 package work.bottle.demo.config;
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -14,6 +16,7 @@ import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.List;
 
+@MapperScan(basePackages = {"work.bottle.demo.mapper"})
 @Configuration
 public class BaseConfig extends WebMvcConfigurationSupport {
 
