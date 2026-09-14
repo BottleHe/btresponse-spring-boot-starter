@@ -6,20 +6,14 @@
 
     <groupId>work.bottle.plugin</groupId>
     <artifactId>spring-boot-starter-project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
-    <parent>
-        <artifactId>spring-boot-parent</artifactId>
-        <groupId>org.springframework.boot</groupId>
-        <version>3.2.4</version>
-    </parent>
     <modules>
         <module>btresponse-core</module>
         <module>btresponse-spring-boot-starter</module>
         <module>test-project</module>
     </modules>
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>

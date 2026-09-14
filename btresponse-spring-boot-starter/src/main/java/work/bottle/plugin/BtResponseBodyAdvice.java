@@ -1,10 +1,7 @@
 package work.bottle.plugin;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;
@@ -23,21 +20,16 @@ import work.bottle.plugin.exception.OperationException;
 
 
 
-@SuppressWarnings({"rawtypes", "FieldCanBeLocal"})
+@SuppressWarnings("rawtypes")
 @ControllerAdvice
 @ConditionalOnProperty(name = "bt-response.enable", matchIfMissing = true)
 public class BtResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     private static final Logger logger = LoggerFactory.getLogger(BtResponseBodyAdvice.class);
 
     private final StandardResponseFactory standardResponseFactory;
-    private final HttpServletRequest httpServletRequest;
-    private final String errorPath;
 
-    public BtResponseBodyAdvice(StandardResponseFactory standardResponseFactory, HttpServletRequest httpServletRequest,
-                                @Value("${server.error.path:${error.path:/error}}") String errorPath) {
+    public BtResponseBodyAdvice(StandardResponseFactory standardResponseFactory) {
         this.standardResponseFactory = standardResponseFactory;
-        this.httpServletRequest = httpServletRequest;
-        this.errorPath = errorPath;
     }
 
     @SuppressWarnings("NullableProblems")

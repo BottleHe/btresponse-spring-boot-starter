@@ -3,15 +3,17 @@ package work.bottle.demo.controller.v1;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -28,11 +30,10 @@ import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.exception.OperationException;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.nio.charset.Charset;
 import java.util.concurrent.ThreadLocalRandom;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = HotelBaseServiceStartup.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 class IndexControllerTest {
@@ -40,6 +41,9 @@ class IndexControllerTest {
 
     @Resource
     private MockMvc mockMvc;
+
+    @Resource
+    private TestRestTemplate testRestTemplate;
 
 //    @Autowired
 //    private WebApplicationContext context;
@@ -311,16 +315,16 @@ class IndexControllerTest {
     }
 
     @Test
-    public void testErrException() throws Exception {
+    public void testErrException() {
         final String uri = "/index/v1/err/exception";
-        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =
-                MockMvcRequestBuilders.get(uri);
-        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder);
-        MvcResult mvcResult = perform.andReturn();
-        MockHttpServletResponse response = mvcResult.getResponse();
-        String contentAsString = response.getContentAsString(Charset.forName("UTF-8"));
-        logger.info("返回Exception<1 / 0>测试(GET {}): {}", uri, contentAsString);
-        Assert.assertEquals("返回Exception<1 / 0>测试(GET " + uri + "), 结果异常", "{\"success\":false,\"code\":500,\"data\":{\"timestamp\":1665375360653,\"path\":\"/index/v1/err/exception\"},\"message\":\"Internal Server Error\"}", contentAsString);
+        // MockMvc不会执行error page转发, 通过RANDOM_PORT真实请求验证ErrorController的错误处理.
+        ResponseEntity<String> entity = testRestTemplate.getForEntity(uri, String.class);
+        logger.info("返回Exception<1 / 0>测试(GET {}): {} {}", uri, entity.getStatusCode(), entity.getBody());
+        Assert.assertEquals("返回Exception<1 / 0>测试(GET " + uri + "), http status异常", 500, entity.getStatusCode().value());
+        DocumentContext body = JsonPath.parse(entity.getBody());
+        Assert.assertFalse("返回Exception<1 / 0>测试(GET " + uri + "), success异常", body.read("$.success", Boolean.class));
+        Assert.assertEquals("返回Exception<1 / 0>测试(GET " + uri + "), code异常", 500, body.read("$.code", Integer.class).intValue());
+        Assert.assertEquals("返回Exception<1 / 0>测试(GET " + uri + "), data.path异常", uri, body.read("$.data.path", String.class));
     }
 
 

@@ -24,6 +24,13 @@ public class OperationException extends RuntimeException {
         this.data = data;
     }
 
+    public OperationException(int code, String message, Object data, Throwable t)
+    {
+        super(message, t);
+        this.code = code;
+        this.data = data;
+    }
+
     public int getCode() {
         return code;
     }

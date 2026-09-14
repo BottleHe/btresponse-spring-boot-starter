@@ -67,26 +67,33 @@ public class OperationException extends RuntimeException {
 ```java
 package work.bottle.plugin.exception;
 
-public class ServerException extends RuntimeException {
+public class GlobalException extends Exception {
 
     private int code;
     private Object data;
 
-    private ServerException()
+    private GlobalException()
     {
         super();
     }
 
-    public ServerException(int code, String message)
+    public GlobalException(int code, String message)
     {
         super(message);
         this.code = code;
         this.data = null;
     }
 
-    public ServerException(int code, String message, Object data)
+    public GlobalException(int code, String message, Object data)
     {
         super(message);
+        this.code = code;
+        this.data = data;
+    }
+
+    public GlobalException(int code, String message, Object data, Throwable t)
+    {
+        super(message, t);
         this.code = code;
         this.data = data;
     }
@@ -126,7 +133,7 @@ public class ServerException extends RuntimeException {
 <dependency>
     <groupId>work.bottle.plugin</groupId>
     <artifactId>btresponse-spring-boot-starter</artifactId>
-    <version>1.0.10</version>
+    <version>2.0.2</version>
 </dependency>
 ```
 
@@ -225,9 +232,9 @@ public class CustomerResponseFactory implements StandardResponseFactory<CustomRe
         return new CustomResponse(code, message, data);
     }
 
-  	// 生产一个返回结构类的ResponseEntity包装实例
+    // 生产一个返回结构类的ResponseEntity包装实例
     @Override
-    public ResponseEntity<CustomResponse> produceResponseEntity(boolean success, int code, String message, Object data, HttpStatus httpStatus, MultiValueMap<String, String> headers) {
+    public ResponseEntity<CustomResponse> produceResponseEntity(boolean success, int code, String message, Object data, int httpStatus, MultiValueMap<String, String> headers) {
         return new ResponseEntity<CustomResponse>(new CustomResponse(code, message, data), headers, httpStatus);
     }
 }

@@ -1,33 +1,24 @@
 package work.bottle.plugin;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import work.bottle.plugin.annotation.Ignore;
 import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
-
-import org.springframework.validation.BindException;
 import work.bottle.plugin.exception.global.client.UnprocessableException;
 import work.bottle.plugin.exception.global.client.UnsupportedException;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * 内部异常处理类, 针对一些特定的异常进行统一处理
@@ -39,17 +30,11 @@ public class BaseResponseBodyExceptionHandler {
 
     private final StandardResponseFactory standardResponseFactory;
     private final BtResponseProperties btResponseProperties;
-    private final RequestMappingHandlerMapping handlerMapping;
-    private final HttpServletRequest httpServletRequest;
 
     public BaseResponseBodyExceptionHandler(StandardResponseFactory standardResponseFactory,
-                                            BtResponseProperties btResponseProperties,
-                                            RequestMappingHandlerMapping handlerMapping,
-                                            HttpServletRequest httpServletRequest) {
+                                            BtResponseProperties btResponseProperties) {
         this.standardResponseFactory = standardResponseFactory;
         this.btResponseProperties = btResponseProperties;
-        this.handlerMapping = handlerMapping;
-        this.httpServletRequest = httpServletRequest;
     }
 
     /**
@@ -62,27 +47,22 @@ public class BaseResponseBodyExceptionHandler {
      */
     @ExceptionHandler(BindException.class)
     @ResponseBody
-    public ResponseEntity bindExceptionHandler(BindException e, HttpServletResponse response) throws Throwable {
+    public ResponseEntity bindExceptionHandler(BindException e, HttpServletResponse response) {
         logger.warn("[BindExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         response.reset();
         BindingResult bindingResult = e.getBindingResult();
+        String message = e.getMessage();
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
-            if (errors != null) {
-                if (0 < errors.size()) {
-                    FieldError fieldError = (FieldError) errors.get(0);
-                    return standardResponseFactory.produceResponseEntity(false, UnprocessableException.Default.getCode(),
-                            fieldError.getDefaultMessage(), null,
-                            btResponseProperties.isLooseMode() /* 宽松模式时, 都应该是 200 */
-                                    ? HttpStatus.OK.value()
-                                    : UnprocessableException.Default.getCode(),
-                            null);
-                }
+            if (null != errors && !errors.isEmpty()) {
+                // 类级校验产生的是ObjectError而非FieldError, 需要兼容处理.
+                ObjectError first = errors.get(0);
+                message = first.getDefaultMessage();
             }
         }
         return standardResponseFactory.produceResponseEntity(false, UnprocessableException.Default.getCode(),
-                e.getMessage(), null,
+                message, null,
                 btResponseProperties.isLooseMode() /* 宽松模式时, 都应该是 200 */
                         ? HttpStatus.OK.value()
                         : UnprocessableException.Default.getCode(),
@@ -90,7 +70,7 @@ public class BaseResponseBodyExceptionHandler {
     }
 
     /**
-     * 参数验证异常 基于 javax. 处理方式同 work.bottle.plugin.exception.global.base.UnsupportedException
+     * 参数验证异常 基于 jakarta. 处理方式同 work.bottle.plugin.exception.global.base.UnsupportedException
      * error code 415
      *
      * @param e
@@ -99,7 +79,7 @@ public class BaseResponseBodyExceptionHandler {
      */
     @ExceptionHandler(ValidationException.class)
     @ResponseBody
-    public ResponseEntity validationExceptionHandler(ValidationException e, HttpServletResponse response) throws Throwable {
+    public ResponseEntity validationExceptionHandler(ValidationException e, HttpServletResponse response) {
         logger.warn("[ValidationExceptionHandler]", e);
         // 清空response body, 不清除的话. 会出现里面存在两个JSON的情况.
         response.reset();
@@ -121,7 +101,7 @@ public class BaseResponseBodyExceptionHandler {
     @ExceptionHandler(GlobalException.class)
     @ResponseBody
     public ResponseEntity globalExceptionHandler(GlobalException e,
-                                                 HttpServletResponse response) throws Throwable {
+                                                 HttpServletResponse response) {
         response.reset();
         return standardResponseFactory.produceResponseEntity(false, e.getCode(),
                 e.getMessage(), e.getData(),
@@ -141,7 +121,7 @@ public class BaseResponseBodyExceptionHandler {
     @ExceptionHandler(OperationException.class)
     @ResponseBody
     public ResponseEntity operationExceptionHandler(OperationException e,
-                                                    HttpServletResponse response) throws Throwable {
+                                                    HttpServletResponse response) {
         response.reset();
         return standardResponseFactory.produceResponseEntity(false, e.getCode(),
                 e.getMessage(), e.getData(), HttpStatus.OK.value(), null);
@@ -174,35 +154,4 @@ public class BaseResponseBodyExceptionHandler {
 //        response.reset();
 //        return standardResponseFactory.produceErrorResponseEntity(t, HttpStatus.INTERNAL_SERVER_ERROR.value());
 //    }
-
-    /**
-     * 这个方法是针对方法上或类上注明了需要忽略的 注解 "@Ignore" 时, 返回信息直接忽略, 但是实际生产中, 这类方法没有实际意义.
-     * 所以废弃这个函数
-     * @param t
-     * @param success
-     * @param code
-     * @param message
-     * @param data
-     * @param status
-     * @param headers
-     * @return
-     * @throws Throwable
-     */
-    @Deprecated
-    private ResponseEntity processResponse(Throwable t, boolean success, int code, String message,
-                                           Object data, int status, MultiValueMap<String, String> headers) throws Throwable {
-        try {
-            Object handler = Objects.requireNonNull(handlerMapping.getHandler(httpServletRequest)).getHandler();
-            if (handler instanceof HandlerMethod) {
-                if (((HandlerMethod) handler).hasMethodAnnotation(Ignore.class)
-                        || null != AnnotationUtils.findAnnotation(((HandlerMethod) handler).getMethod().getDeclaringClass(), Ignore.class)) {
-                    throw t;
-                }
-            }
-        } catch (Exception e) {
-            logger.warn("ProcessResponse", e);
-        }
-        return standardResponseFactory.produceResponseEntity(success, code,
-                message, data, status, headers);
-    }
 }

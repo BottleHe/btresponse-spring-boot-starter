@@ -21,6 +21,7 @@ import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import work.bottle.plugin.exception.GlobalException;
 import work.bottle.plugin.exception.OperationException;
 
 import java.util.*;
@@ -108,22 +109,29 @@ public class BtErrorController extends AbstractErrorController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         if (null != e) {
             logger.error("", e);
-            Throwable cause = e.getCause();
-            if (null != cause) {
-                // logger.error("  -- {}", cause);
-                if (cause instanceof OperationException) {
-                    return standardResponseFactory.produceErrorResponseEntity((OperationException) cause);
-                }
+            // 异常本身是业务异常时直接处理; 否则再看一层 cause(容器/过滤器可能会包装一层).
+            Throwable target = (e instanceof OperationException || e instanceof GlobalException) ? e : e.getCause();
+            if (target instanceof OperationException) {
+                return standardResponseFactory.produceErrorResponseEntity((OperationException) target);
+            }
+            if (target instanceof GlobalException) {
+                GlobalException globalException = (GlobalException) target;
+                return standardResponseFactory.produceResponseEntity(false, globalException.getCode(),
+                        globalException.getMessage(), globalException.getData(),
+                        btResponseProperties.isLooseMode() /* 宽松模式时, 可控异常 http status 为 200 */
+                                ? HttpStatus.OK.value()
+                                : globalException.getCode(),
+                        headers);
             }
         }
         Map<String, Object> body = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.ALL));
         HttpStatus status = getStatus(request);
-        ResponseEntity responseEntity = standardResponseFactory.produceResponseEntity(false,
-                status.value(), (String) body.getOrDefault("error", "Internal server error"), body, status.value(), headers);
-
-        body.remove("error");
+        // error/status 两个字段会提升到外层结构中, 不放进 data
+        Object error = body.remove("error");
         body.remove("status");
-        return responseEntity;
+        String message = null != error ? String.valueOf(error) : "Internal server error";
+        return standardResponseFactory.produceResponseEntity(false,
+                status.value(), message, body, status.value(), headers);
     }
 
     @ExceptionHandler(HttpMediaTypeNotAcceptableException.class)

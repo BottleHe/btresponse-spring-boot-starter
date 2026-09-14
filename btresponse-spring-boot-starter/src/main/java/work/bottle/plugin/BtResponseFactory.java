@@ -14,7 +14,7 @@ public class BtResponseFactory implements StandardResponseFactory<BtResponse> {
 
     @Override
     public BtResponse produceResponse(int code, String message, Object data) {
-        return produceResponse(0 == code ? true : false, code, message, data);
+        return produceResponse(code == 0, code, message, data);
     }
 
     @Override

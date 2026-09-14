@@ -21,4 +21,10 @@
 
 ### v1.1.3
 * 更新集中存储变更为 类 表, 可以使用code去获取这个类.
-* 还原子异常中的Default的定义方式, 还是使用自己new的对象. 
+* 还原子异常中的Default的定义方式, 还是使用自己new的对象.
+
+### v 2.0.1
+* 更新支持JAVA21
+
+### v 2.0.2
+* OperationException 添加带 Throwable cause 的构造函数(与 GlobalException 对齐)
