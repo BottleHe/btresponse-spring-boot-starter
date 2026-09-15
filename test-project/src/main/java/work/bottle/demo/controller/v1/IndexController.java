@@ -2,16 +2,21 @@ package work.bottle.demo.controller.v1;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import work.bottle.demo.model.CustomResponse;
 import work.bottle.demo.model.EmployeeAuth;
 import work.bottle.demo.model.EmployeeMobileLoginData;
 import work.bottle.demo.model.VerificationData;
 import work.bottle.plugin.exception.OperationException;
+import work.bottle.plugin.exception.global.client.ConflictException;
 import work.bottle.plugin.exception.global.client.InvalidPasswordException;
 import work.bottle.plugin.exception.global.client.NotFoundException;
 import work.bottle.plugin.exception.global.client.UnknownIdentityException;
 import work.bottle.plugin.exception.global.server.ConfigurationException;
 import work.bottle.plugin.exception.global.server.InsufficientException;
+import work.bottle.plugin.model.BtResponse;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
@@ -145,7 +150,7 @@ public class IndexController {
         int i = ThreadLocalRandom.current().nextInt(800, 999999);
         verificationData.setCode(String.format("%06d", i));
         verificationData.setExpireTimestamp((int)(System.currentTimeMillis() / 1000) + 300); // 5分钟过期
-        verificationData.setExpireTimestamp((int)(System.currentTimeMillis() / 1000) + 60); // 1分钟后支持重发
+        verificationData.setNextSentTimestamp((int)(System.currentTimeMillis() / 1000) + 60); // 1分钟后支持重发
         return verificationData;
     }
 
@@ -171,5 +176,51 @@ public class IndexController {
     public String e561() throws InsufficientException {
         if (true) throw InsufficientException.Default;
         return "done";
+    }
+
+    @GetMapping("/e/s/409-custom")
+    public String conflictWithCustomMessage() throws ConflictException {
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("orderId", 9527L);
+        throw new ConflictException("订单状态已变更, 请刷新后重试", data);
+    }
+
+    @GetMapping("/ret/btresponse")
+    public BtResponse retBtResponse() {
+        // 已是包装类型, Advice应透传不再二次包装(isInstance分支)
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("passthrough", true);
+        return new BtResponse(false, 1234, data, "预包装返回");
+    }
+
+    @GetMapping("/ret/custom-response")
+    public CustomResponse retCustomResponse() {
+        // 默认工厂: 会被当作data包装; 自定义工厂(CustomerResponseFactory)场景: 透传
+        return new CustomResponse(88, "自定义结构", "payload");
+    }
+
+    @GetMapping("/ret/void")
+    public void retVoid() {
+        // 记录基线行为: void返回不参与包装
+    }
+
+    @GetMapping("/ret/map")
+    public Map<String, Object> retMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("hello", "world");
+        map.put("count", 2);
+        return map;
+    }
+
+    @GetMapping("/ret/response-entity-string")
+    public ResponseEntity<String> retResponseEntityString() {
+        // String体走StringHttpMessageConverter, Advice不介入, 应原样返回
+        return ResponseEntity.ok("entity-body");
+    }
+
+    @GetMapping("/ret/response-entity-bt")
+    public ResponseEntity<BtResponse> retResponseEntityBt() {
+        // ResponseEntity包装的已是BtResponse: 透传且保留201状态
+        return ResponseEntity.status(201).body(new BtResponse(true, 0, "created", ""));
     }
 }

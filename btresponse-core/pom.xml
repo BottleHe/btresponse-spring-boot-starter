@@ -41,6 +41,14 @@
     </developers>
     <!-- OSSRH(s01.oss.sonatype.org)已于2025-06停服, 发布迁移到Central Portal, 详见仓库根目录RELEASING.md.
          凭证配置在 ~/.m2/settings.xml 的 <server><id>central</id> 中. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
